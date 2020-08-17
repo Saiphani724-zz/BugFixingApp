@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './cool-background.png';
 import './homepage.css';
 
 function HomePage() {
@@ -14,10 +13,6 @@ function HomePage() {
 				<h1 style={{ textAlign: 'center' }}> Errors in the code</h1>
 			</div>
 			<div className="contr">
-
-
-
-
 				<h1 style={{ textAlign: 'right' }}>
 					You are lucky
         </h1>

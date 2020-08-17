@@ -1,12 +1,11 @@
 import React from 'react';
-import './tempcomponent.css';
+import './Feedback.css';
 
 function Feedback() {
 	return (
 		<div>
-
+			<h1>Feedback</h1>
 		</div>
-
 	);
 }
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import './tempcomponent.css';
+import './Profile.css';
 
 function Profile() {
 	return (
 		<div>
-
+			<h1>Profile</h1>
 		</div>
 
 	);

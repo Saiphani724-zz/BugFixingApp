@@ -1,6 +1,6 @@
 import React from "react";
-import "./App.scss";
-import { Login, Register } from "../login";
+import "./SignInApp.scss";
+import { Login, Register } from ".";
 
 class App extends React.Component {
   constructor(props) {
@@ -33,7 +33,7 @@ class App extends React.Component {
     const current = isLogginActive ? "Register" : "Login";
     const currentActive = isLogginActive ? "login" : "register";
     return (
-      <div className="App">
+      <div className="SignIn">
         <div className="login">
           <div className="container" ref={ref => (this.container = ref)}>
             {isLogginActive && (

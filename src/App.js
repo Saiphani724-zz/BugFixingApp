@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
-import Login from './components/login/App';
+import Login from './components/login/SignInApp';
 import HomePage from './components/Home/homepage';
 import TopNavBar from './components/TopNavBar/topnavbar';
-import TempComponent from './components/TempComponent/tempcomponent';
+
+import About from './components/About/About';
+import Dashboard from './components/Dashboard/Dashboard';
+import AskQuestion from './components/AskQuestion/AskQuestion';
+import PostAnswer from './components/PostAnswer/PostAnswer';
+import ViewAnswer from './components/ViewAnswer/ViewAnswer';
+import Profile from './components/Profile/Profile';
+import Feedback from './components/Feedback/Feedback';
+import './App.css';
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -24,7 +32,14 @@ class App extends Component {
 					<Switch>
 						<Route path='/' component={HomePage} exact />
 						<Route path='/signin' component={Login} />
-						<Route path='/temp' component={TempComponent} />
+						<Route path='/about' component={About} />
+						<Route path='/dashboard' component={Dashboard} />
+						<Route path='/askquestion' component={AskQuestion} />
+						<Route path='/postanswer' component={PostAnswer} />
+						<Route path='/viewanswer' component={ViewAnswer} />
+						<Route path='/profile' component={Profile} />
+						<Route path='/feedback' component={Feedback} />
+						
 						<Route component={notdefined} />
 					</Switch>
 				</BrowserRouter>

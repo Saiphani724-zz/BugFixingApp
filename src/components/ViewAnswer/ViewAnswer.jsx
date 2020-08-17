@@ -1,10 +1,10 @@
 import React from 'react';
-import './tempcomponent.css';
+import './ViewAnswer.css';
 
 function ViewAnswer() {
 	return (
 		<div>
-
+			<h1>ViewAnswer</h1>
 		</div>
 
 	);

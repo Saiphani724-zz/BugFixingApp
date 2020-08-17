@@ -1,10 +1,10 @@
 import React from 'react';
-import './tempcomponent.css';
+import './PostAnswer.css';
 
 function PostAnswer() {
 	return (
 		<div>
-
+			<h1>PostAnswer</h1>
 		</div>
 
 	);

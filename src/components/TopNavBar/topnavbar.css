@@ -1,7 +1,10 @@
-    .nav-wrapper{
+.nav-wrapper{
 	display: flex;
 	overflow: hidden;
 	justify-content: space-around;
+	text-transform: uppercase;
+	padding: 12px;
+	padding-bottom: 20px;
 	background-color: black;
     }
     .nav-link-wrapper{
@@ -23,13 +26,3 @@
     .nav-link-wrapper a:hover{
 	color:whitesmoke;
     }
-    .cont{
-	text-transform: capitalize;color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 20px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
-    
-    }
-    .conte{
-	text-transform: capitalize;color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 20px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center;
-    
-    }
-    .contr { text-transform: capitalize;color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 20px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
-    .contd { text-transform: capitalize;color: #111; font-family: 'Helvetica Neue', sans-serif; font-size: 50px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: center; }
