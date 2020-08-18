@@ -1,4 +1,5 @@
-.nav-wrapper{
+
+.nav-wrapper {
 	display: flex;
 	overflow: hidden;
 	justify-content: space-around;
@@ -6,23 +7,30 @@
 	padding: 12px;
 	padding-bottom: 20px;
 	background-color: black;
-    }
-    .nav-link-wrapper{
+	font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+
+.nav-link-wrapper {
 	height: 20px;
 	font-size: large;
 	border-bottom: 1px solid transparent;
 	transition: border-bottom 0.5s;
 	display: block;
-    }
-    .nav-link-wrapper a{
-	color:white;
+}
+
+.nav-link-wrapper a {
+	color: white;
 	text-decoration: none;
 	transition: color 0.5s;
 	padding: 14px 20px;
-    }
-    .nav-link-wrapper:hover{
+}
+
+.nav-link-wrapper:hover {
 	border-bottom: 1px solid whitesmoke;
-    }
-    .nav-link-wrapper a:hover{
-	color:whitesmoke;
-    }
+}
+
+.nav-link-wrapper a:hover {
+	color: whitesmoke;
+}

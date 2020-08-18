@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import cookie from 'react-cookies';
-import loginImg from "./login.svg";
 // import { withRouter } from 'react-router-dom'
 
 // import './Register.css';
@@ -91,16 +90,13 @@ export class Register extends Component {
 
 
 		return (
-			<div className="base-container" >
+			<div className="base-container register" >
+				<br></br>
+				<br></br>
 				<div className="header">Register</div>
-
 				<div className="content">
 
 					<div className="form">
-						<div className="image">
-							<img src={loginImg} className="regimg" />
-						</div>
-
 						<div className="form-group">
 							<label for="username" >Username</label>
 							<input type="username" id="username" placeholder="Enter your Username" onChange={this.handleUsernameChange} />
@@ -131,14 +127,12 @@ export class Register extends Component {
 						</div>
 
 					</div>
-
 				</div>
-
 				
-					<button type="button" className="btn">
-						Register
-          				</button>
-				
+				<button type="button" className="btn mybtn" >
+					Register
+          			</button>
+				    
 
 			</div>
 

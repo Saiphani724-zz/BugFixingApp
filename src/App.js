@@ -39,7 +39,7 @@ class App extends Component {
 						<Route path='/viewanswer' component={ViewAnswer} />
 						<Route path='/profile' component={Profile} />
 						<Route path='/feedback' component={Feedback} />
-						
+
 						<Route component={notdefined} />
 					</Switch>
 				</BrowserRouter>

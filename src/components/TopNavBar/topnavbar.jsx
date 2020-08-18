@@ -1,6 +1,7 @@
 import React from 'react';
 import './topnavbar.css';
 import cookies from 'react-cookies';
+import { Tab } from '@material-ui/core';
 
 function logOut() {
 	console.log(cookies.load('username'));
@@ -14,7 +15,7 @@ function TopNavBar() {
 
 	return (
 		<div className="TopNavbar">
-			<div className="container">
+			<div className="">
 				<div className="nav-wrapper">
 					<div className="nav-link-wrapper">
 						<a href="/">Home</a>
@@ -31,7 +32,7 @@ function TopNavBar() {
 					</div>
 
 					{username !== undefined ? <div className="nav-link-wrapper">
-							<a href="/profile" >Hi {username}!!</a>
+							<a href="/profile" >Hi <Tab></Tab> {username}!!</a>
 						</div>
 						 :
 						<div className="nav-link-wrapper">
