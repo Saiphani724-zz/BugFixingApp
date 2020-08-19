@@ -69,7 +69,7 @@ class Dashboard extends React.Component {
 									<MDBCardImage
 										className='purple-gradient'
 										tag='div'>
-										<a href="#"><h5 className="question">Worth to use Layout_constraintEnd_toEnd, layout_constraintLeft_toLeftOf, layout_constraintStart_toStartOf</h5></a>
+										<a href="/viewanswer"><h5 className="question">Worth to use Layout_constraintEnd_toEnd, layout_constraintLeft_toLeftOf, layout_constraintStart_toStartOf</h5></a>
 									</MDBCardImage>
 									<div className="body">
 										<span className="details">
