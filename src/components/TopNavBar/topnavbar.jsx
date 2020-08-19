@@ -1,7 +1,7 @@
 import React from 'react';
 import './topnavbar.css';
 import cookies from 'react-cookies';
-import { Tab } from '@material-ui/core';
+// import { Tab } from '@material-ui/core';
 
 function logOut() {
 	console.log(cookies.load('username'));

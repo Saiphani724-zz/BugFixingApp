@@ -11,7 +11,17 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 
 
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBRow, MDBCol, MDBIcon } from 'mdbreact';
+import { 
+	// MDBBtn, 
+	MDBCard, 
+	// MDBCardBody, 
+	MDBCardImage, 
+	// MDBCardTitle, 
+	// MDBCardText,
+	 MDBRow,
+	  MDBCol,
+	//    MDBIcon 
+	} from 'mdbreact';
 
 
 
