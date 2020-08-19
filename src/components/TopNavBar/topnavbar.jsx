@@ -32,7 +32,7 @@ function TopNavBar() {
 					</div>
 
 					{username !== undefined ? <div className="nav-link-wrapper">
-							<a href="/profile" >Hi <Tab></Tab> {username}!!</a>
+							<a href="/profile" >Hi <tab1></tab1> {username}!!</a>
 						</div>
 						 :
 						<div className="nav-link-wrapper">
