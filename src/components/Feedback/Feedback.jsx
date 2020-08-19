@@ -4,29 +4,17 @@ import './Feedback.scss';
 import { Form, Button } from 'react-bootstrap';
 import { MDBContainer, MDBRating } from 'mdbreact';
 
-function Feedback() {
-	const [basic] = useState([
-		{
-			tooltip: 'Very Bad'
-		},
-		{
-			tooltip: 'Poor'
-		},
-		{
-			tooltip: 'Ok',
-			choosed: true
-		},
-		{
-			tooltip: 'Good'
-		},
-		{
-			tooltip: 'Excellent'
-		}
-	]);
+import Chart from './Chart/Chart';
 
+
+
+function Feedback() {
+	
 
 	return (
 		<div class="feedbackpage">
+
+			
 			<h1>Your Feedback is very Valuable</h1>
 			<div class="feedbackform">
 				<Form>
@@ -52,6 +40,13 @@ function Feedback() {
   				</Button>
 				</Form>
 			</div>
+
+			<div className="mychart">
+				<Chart/>
+			</div>
+			
+			
+
 		</div>
 	);
 }

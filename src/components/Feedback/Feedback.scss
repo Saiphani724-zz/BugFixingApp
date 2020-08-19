@@ -1,5 +1,6 @@
 .feedbackpage{
 	.feedbackform {
+		display: inline-block;
 		margin: 3%;
 		width: 40%;
 	}	
@@ -7,11 +8,17 @@
 	.formlabel{
 		font-size: x-large;
 		font-weight: 600;
-		margin: 25px;
+		margin: 0px 25px 25px 25px;
 		font-family:'Times New Roman', Times, serif ;
 	}
 	h1{
 		margin-top: 30px;
+	}
+
+	.mychart {
+		position: relative;
+		left: 300px;
+		top: -400px;
 	}
 	
 }
