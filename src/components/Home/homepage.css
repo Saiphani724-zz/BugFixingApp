@@ -7,6 +7,12 @@ body{
      
     }
 
+    .feedbackbtn{
+	    position: relative;
+	    left: 600px;
+	    top: -200px;
+    }
+
     .HomePage {
 	    margin : 10px;
     }
