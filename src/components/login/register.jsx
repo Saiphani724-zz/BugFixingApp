@@ -69,7 +69,7 @@ export class Register extends Component {
 
 		const Button = () => (
 			<button
-				className="btn-md btn btn-success"
+				type="button" className="btn mybtn"
 				id="registerButton"
 				value="Register"
 				onClick={
@@ -129,9 +129,7 @@ export class Register extends Component {
 					</div>
 				</div>
 				
-				<button type="button" className="btn mybtn" >
-					Register
-          			</button>
+				<Button />
 				    
 
 			</div>

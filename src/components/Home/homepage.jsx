@@ -23,6 +23,9 @@ function HomePage() {
 					<h1 style={{ textAlign: 'center' }}>
 						We are here to help you
     </h1> </marquee>
+				<a href="/feedback"><button type="button" className="btn btn-secondary feedbackbtn" >
+					Give Feedback
+          			</button></a>
 			</div>
 		</div >
 	);
