@@ -1,66 +1,48 @@
 import React, { Component } from 'react';
-import './AskQuestion.css';
+import './AskQuestion.scss';
+import { Form, Button } from 'react-bootstrap';
+import bulb from "./miracle.png"
 
-export class AskQuestion extends React.Component {
+export class AskQuestion extends Component {
 	constructor(props) {
-	  super(props);
-	  this.state = {value: ''};  
-	  this.handleChange = this.handleChange.bind(this);
-	  this.handleSubmit = this.handleSubmit.bind(this);
-	}
-  
-	handleChange(event) {
-	//   this.setState({value: event.target.value});
+		super(props);
+
 	}
 
-	handleQuesChange(event) {
-		  this.setState({value: event.target.value});
-		  console.log(event.target.value);
-		}
-  
-	handleSubmit(event) {
-	  alert('A name was submitted: ' + this.state.value);
-	  event.preventDefault();
-	}
-  
+
 	render() {
-	  return (
-		<form onSubmit={this.handleSubmit}>
+		return (
+			<div class="imgQues">
+				<img src={bulb} alt="image"></img>
+			
+			<div class="askQues">
+				<Form >
+				<Form.Group controlId="exampleForm.ControlInput1">
+					<Form.Label><b>Title</b></Form.Label>
+					<Form.Control type="email" placeholder="Enter the title here" />
+				</Form.Group>
 
-		  <div class="title">
-            <label>
-			<h5><b>Title:</b></h5>			
-			<input type="text" value={this.state.value} />
-			</label>
-		  </div>
+				<Form.Group controlId="exampleForm.ControlTextarea1">
+					<Form.Label><b>Question area</b></Form.Label>
+					<Form.Control as="textarea" rows="10" placeholder="Enter your Question here"/>
+				</Form.Group>
 
-		  <br></br>
+				<Form.Group controlId="exampleForm.ControlInput1">
+					<Form.Label>Tags</Form.Label>
+					<Form.Control type="email" placeholder="Your tags go here" />
+				</Form.Group>
+				<br></br>
+				<Button variant="primary" type="submit">
+					Post your Question
+  				</Button>
 
-		  <div class="QuesArea">
-			<label>
-				<h5><b>Your Question</b></h5>
-				<textarea>
-					<input type="textarea" placeholder = "Your Question Goes Here" onChange={this.handleQuesChange}/>
-				</textarea>				
-			</label>
-		  </div>
-
-	      <br></br>
-		  <div class="title">
-            <label>
-			<h5><b>Tags:</b></h5>			
-			<input type="text" placeholder = "add tags" value={this.state.value} />
-			</label>
-		  </div>
-
-		  <div>
-		  	<input type="submit" value="Post your Question" />
-		  </div>
-
-		</form>
-	  );
+			</Form>
+			</div>
+			</div>
+			
+		);
 	}
-  }
+}
 
 
-  export default AskQuestion;
+export default AskQuestion;
