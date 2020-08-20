@@ -1,3 +1,22 @@
-.div {
-	
+textarea{
+    width: 1000px;
+    height: 300px;
+  }
+
+  form{
+      padding: 80px 280px;
+  }
+
+  .title input{
+      width: 1000px;
+  }
+
+  .QuesArea input{
+      width: 1000px;
+      height: 500px;
+      text-align: top left;
+  }
+
+  input::placeholder-shown{
+    text-align: top;
 }
