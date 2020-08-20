@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './AskQuestion.css';
 
-export class AskQuestion extends React.Component {
+export class AskQuestion extends Component {
 	constructor(props) {
 	  super(props);
 	  this.state = {value: ''};  
@@ -40,7 +40,7 @@ export class AskQuestion extends React.Component {
 			<label>
 				<h5><b>Your Question</b></h5>
 				<textarea>
-					<input type="textarea" placeholder = "Your Question Goes Here" onChange={this.handleQuesChange}/>
+					<input type="textarea" lines="3" placeholder = "Your Question Goes Here" onChange={this.handleQuesChange}/>
 				</textarea>				
 			</label>
 		  </div>
