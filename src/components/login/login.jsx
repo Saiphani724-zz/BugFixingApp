@@ -54,7 +54,7 @@ export class Login extends React.Component {
 				<div className="content">
 					<div className="form">
 						<div className="image">
-							<img src={loginImg} className="regimg" />
+							<img src={loginImg} className="regimg" alt= "" />
 						</div>
 						<br></br>
 
