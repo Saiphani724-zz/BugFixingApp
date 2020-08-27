@@ -7,7 +7,11 @@
 .imgQues img{
     float: right;
     width: 500px;
-    height: 550px;
+    height: 450px;
     margin-right: 100px;
-    margin-top: 0px;
+    margin-top: 50px;
 }
+
+.ck-editor__editable_inline {
+    min-height: 300px;
+  }
