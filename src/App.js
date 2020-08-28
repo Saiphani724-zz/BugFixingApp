@@ -11,14 +11,24 @@ import ViewAnswer from './components/ViewAnswer/ViewAnswer';
 import Profile from './components/Profile/Profile';
 import Feedback from './components/Feedback/Feedback';
 import './App.css';
+import robo from "./Robo.png"
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const notdefined = () => {
 	return (
-		<div id="404">
-			<h1 >Page Not Found</h1>
-			<h2>Error 404 </h2>
+		<div id="e404">
+			<div class="error404">
+				<ul class="errortext">
+					<li><h2 class="error">Error 404 </h2></li>
+					<br></br>
+					<li><h1>&#123;&#123; Page Not Found &#125;&#125;</h1></li>
+				</ul>
+			</div>			
+			
+			<div class="robo">
+				<img src={robo} alt="image"></img>
+			</div>
 		</div>
 	)
 }
