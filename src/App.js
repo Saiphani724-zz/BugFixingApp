@@ -17,9 +17,15 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 const notdefined = () => {
 	return (
-		<div id="error404">
-			<h1 >Page Not Found</h1>
-			<h2>Error 404 </h2>
+		<div id="e404">
+			<div class="error404">
+				<ul class="errorpgu">
+					<li><h2 class="a">Error 404 </h2></li>
+					<br></br>
+					<li><h1>&#123;&#123; Page Not Found &#125;&#125;</h1></li>
+				</ul>
+			</div>			
+			
 			<div class="robo">
 				<img src={robo} alt="image"></img>
 			</div>

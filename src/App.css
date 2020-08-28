@@ -1,6 +1,7 @@
 h1 {
 	text-align: center;
-	font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 900;
 }
 
 .App {
@@ -9,12 +10,27 @@ h1 {
 
 .robo{
   float: right;
-  margin-right: 30px;
+  margin-right: 80px;
+  margin-top: 30px;
 }
 
-/* #error404{
-  
-} */
+.error404{
+  float: left;
+  margin-top: 150px;
+  font-weight: 900;
+}
+
+.errorpgu{
+  list-style-type: none;
+  margin-left: 200px;
+  margin-top: 80px;
+}
+
+.a{
+  text-align: center;
+  font-weight: 900;
+  font-size: 100px;
+}
 
 .App-logo {
   height: 40vmin;
