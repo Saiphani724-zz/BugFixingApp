@@ -53,22 +53,22 @@ export class AskQuestion extends Component {
       <div class="askQues">
         <Form >
         <Form.Group controlId="exampleForm.ControlInput1">
-          <Form.Label><b>Title</b></Form.Label>
+          <Form.Label class="titleQues"><b>Title</b></Form.Label>
           <Form.Control type="email" placeholder="Enter the title here" />
         </Form.Group>
 
         <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Label><b>Question area</b></Form.Label>
+          <Form.Label class="titleQues"><b>Question area</b></Form.Label>
           <RichTextEditor
             toolbarConfig={toolbarConfig}
             value={this.state.value}
             onChange={this.onChange}
-            className= 'custom-css-class'
+            className= 'custom-class'
           />
         </Form.Group>
 
         <Form.Group controlId="exampleForm.ControlInput1">
-          <Form.Label>Tags</Form.Label>
+          <Form.Label class="titleQues">Tags</Form.Label>
           <Form.Control type="email" placeholder="Your tags go here" />
         </Form.Group>
         <br></br>
