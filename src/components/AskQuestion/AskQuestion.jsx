@@ -6,16 +6,16 @@ import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 export class AskQuestion extends Component {
-	constructor(props) {
-		super(props);
+	// constructor(props) {
+	// 	super(props);
 
-	}
+	// }
 
 
 	render() {
 		return (
 			<div class="imgQues">
-				<img src={bulb} alt="image"></img>
+				<img src={bulb} alt="AskQuestion" ></img>
 
 			<div class="askQues">
 				<Form >

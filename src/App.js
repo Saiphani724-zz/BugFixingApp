@@ -27,7 +27,7 @@ const notdefined = () => {
 			</div>			
 			
 			<div class="robo">
-				<img src={robo} alt="image"></img>
+				<img src={robo} alt="Page Not Found" ></img>
 			</div>
 		</div>
 	)

@@ -4,7 +4,9 @@ import cookie from 'react-cookies';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
-import { MDBBox, MDBRow, MDBCol, MDBCard, MDBCardImage, MDBCardTitle, MDBCardBody, MDBCardText, MDBIcon, MDBContainer, MDBCardFooter } from 'mdbreact';
+import { 
+	// MDBBox,
+	 MDBRow, MDBCol, MDBCard, MDBCardImage, MDBCardTitle, MDBCardBody, MDBCardText, MDBIcon, MDBContainer, MDBCardFooter } from 'mdbreact';
 class Profile extends React.Component {
 	state = {
 		'username':'',

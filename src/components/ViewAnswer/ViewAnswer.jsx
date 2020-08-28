@@ -1,6 +1,6 @@
 import React from 'react';
 import './ViewAnswer.css';
-import cookie from 'react-cookies';
+// import cookie from 'react-cookies';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
