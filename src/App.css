@@ -20,13 +20,13 @@ h1 {
   font-weight: 900;
 }
 
-.errorpgu{
+.errortext{
   list-style-type: none;
   margin-left: 200px;
   margin-top: 80px;
 }
 
-.a{
+.error{
   text-align: center;
   font-weight: 900;
   font-size: 100px;

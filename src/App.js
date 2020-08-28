@@ -19,8 +19,8 @@ const notdefined = () => {
 	return (
 		<div id="e404">
 			<div class="error404">
-				<ul class="errorpgu">
-					<li><h2 class="a">Error 404 </h2></li>
+				<ul class="errortext">
+					<li><h2 class="error">Error 404 </h2></li>
 					<br></br>
 					<li><h1>&#123;&#123; Page Not Found &#125;&#125;</h1></li>
 				</ul>
