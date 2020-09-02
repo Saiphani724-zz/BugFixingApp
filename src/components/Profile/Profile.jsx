@@ -35,6 +35,7 @@ componentDidMount() {
           <MDBCardImage cascade style={{ height: '20rem' }} src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" />
           <MDBCardBody cascade className="text-center">
 	<MDBCardTitle>{this.state.username}</MDBCardTitle>
+	<MDBCardText className="text-center" >{(this.state.username==='sachmo')?<h4>Moderator</h4>:<h4>User</h4>}</MDBCardText>
             <h5 className="indigo-text"><strong>Company Name</strong></h5>
             <MDBCardText>This is my Bio.. Have a quick peek ;)</MDBCardText>
 			<MDBIcon icon="star" /><MDBIcon icon="star" /><MDBIcon icon="star" /><MDBIcon icon="star" /><MDBIcon icon="star" /><br/>
