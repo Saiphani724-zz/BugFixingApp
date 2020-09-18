@@ -76,7 +76,7 @@ class HomePage extends Component {
 									<div className="col-md-6">
 										<div className="count-area-content">
 											<div className="count-digit">1280</div>
-											<div className="count-title">No of questions asked</div>
+											<div className="count-title">No of questions</div>
 										</div>
 									</div>
 									<div className="col-md-6">
@@ -105,7 +105,9 @@ class HomePage extends Component {
 					<li><a href="https://www.facebook.com/livingindiatv/" style={{ height: '50px', width: '50px' }}>facebook<span></span></a></li>
 				</ul>
 
-
+				<a href="/feedback"><button type="button" className="btn btn-secondary feedbackbtn" >
+					Give Feedback
+          			</button></a>
 
 			</div>
 		);
