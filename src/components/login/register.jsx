@@ -11,7 +11,14 @@ export class Register extends Component {
 	}
 	state = {
 		'username': '',
-		'wrongUsernameFormat': false
+		'email': '',
+		'rollNo': '',
+		'date': '',
+		'password': '',
+		'wrongUsernameFormat': false,
+		'wrongEmailFormat': false , 
+		'wrongPasswordFormat': 0 , 
+		'wrongRollNoFormat': 0 , 
 	}
 
 	handleUsernameChange = (e) => {
@@ -26,20 +33,51 @@ export class Register extends Component {
 	handleEmailChange = (e) => {
 		this.setState({ 'email': e.target.value })
 	}
-	handleMobileChange = (e) => {
-		this.setState({ 'mobile': e.target.value })
+	handleDateChange = (e) => {
+		this.setState({ 'date': e.target.value });
+		console.log("Date Changed");
 	}
 
 
 
 	checkRegex = () => {
-		if (this.state.username !== "") {
-			return true
-		}
-		else {
+		var flag = 1;
+
+		this.setState(
+			{ 
+				'wrongUsernameFormat': 0 , 
+				'wrongEmailFormat': 0 , 
+				'wrongPasswordFormat': 0 , 
+				'wrongRollNoFormat': 0 , 
+			}
+		)
+
+		if (this.state.username === "") {
 			this.setState({ 'wrongUsernameFormat': 1 })
-			return false
+			flag = 0;
 		}
+		if(this.state.email === ""){
+			this.setState({ 'wrongEmailFormat': 1 })
+			flag = 0;
+		}
+		if(this.state.password === ""){
+			this.setState({ 'wrongPasswordFormat': 1 })
+			flag = 0;
+		}
+		if(this.state.rollNo === ""){
+			this.setState({ 'wrongRollNoFormat': 1 })
+			flag = 0;
+		}
+		if(this.state.date === ""){
+			this.setState({ 'wrongDateFormat': 1 })
+			flag = 0;
+		}
+		
+		
+		if(flag){
+			alert("User Registration done");
+		}
+		
 	}
 
 	goToHomePage = () => {
@@ -93,7 +131,7 @@ export class Register extends Component {
 			<div className="base-container register" >
 				<br></br>
 				<br></br>
-				<div className="header">Register</div>
+				<h3 >Register</h3>
 				<div className="content">
 
 					<div className="form">
@@ -104,15 +142,31 @@ export class Register extends Component {
 
 						{
 							this.state.wrongUsernameFormat ?
-								<p className="indentErrorMsg">Wrong Username Format</p>
+								<p className="errormsg">Wrong Username Format</p>
 								: null
 						}
 
+						<div className="form-group">
+							<label htmlFor="date">Date of Birth</label>
+							<input type="date" id="date" placeholder="Enter your DOB" onChange={this.handleDateChange} />
+						</div>
+
+						{
+							this.state.wrongDateFormat ?
+								<p className="errormsg">Please Enter Complete Date of Birth</p>
+								: null
+						}
 
 						<div className="form-group">
 							<label htmlFor="email">Email</label>
 							<input type="email" id="email" placeholder="Enter your Email" onChange={this.handleEmailChange} />
 						</div>
+
+						{
+							this.state.wrongEmailFormat ?
+								<p className="errormsg">Wrong Email Format</p>
+								: null
+						}
 
 
 						<div className="form-group">
@@ -120,17 +174,32 @@ export class Register extends Component {
 							<input type="text" id="rollNo" placeholder="Enter your Roll No" onChange={this.handleRollNoChange} />
 						</div>
 
+						{
+							this.state.wrongRollNoFormat ?
+								<p className="errormsg">Wrong Register No. Format</p>
+								: null
+						}
+
 
 						<div className="form-group">
 							<label for="password">Password</label>
 							<input type="password" id="password" placeholder="Enter your Password" onChange={this.handlePasswordChange} />
 						</div>
 
+						{
+							this.state.wrongPasswordFormat ?
+								<p className="errormsg">Wrong Password Format</p>
+								: null
+						}
+
+						<Button />
+
 					</div>
+
 				</div>
-				
-				<Button />
-				    
+
+
+
 
 			</div>
 

@@ -9,7 +9,11 @@
   font-family: "Open Sans", sans-serif;
 }
 
-
+.errormsg{
+	margin-top: -40px;
+	color:red;	
+	font-weight: bold;
+}
 
 .SignIn-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -43,11 +47,11 @@
 
 //Login Main Container
 .login {
-	.btn {
-    background-color: #86BAFC;
+	.btn {	
+			    background-color: #86BAFC;
 	    }
   width: 27em;
-  height: 40em;
+  height: 52em;
 //   min-height: 44em;
   display: flex;
   justify-content: center;
