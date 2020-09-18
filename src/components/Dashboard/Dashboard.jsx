@@ -11,24 +11,24 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 
 
-import { 
-	// MDBBtn, 
-	MDBCard, 
+import {
+	MDBBtn,
+	MDBCard,
 	// MDBCardBody, 
-	MDBCardImage, 
+	MDBCardImage,
 	// MDBCardTitle, 
 	// MDBCardText,
-	 MDBRow,
-	  MDBCol,
-	//    MDBIcon 
-	} from 'mdbreact';
+	MDBRow,
+	MDBCol,
+	MDBIcon
+} from 'mdbreact';
 
 
 
 class Dashboard extends React.Component {
 
 	state = {
-
+		'search' : ""
 	}
 
 	componentDidMount() {
@@ -41,6 +41,16 @@ class Dashboard extends React.Component {
 		}
 	}
 
+	onSearchInputChange = (e) => {
+		this.setState({ 'search': e.target.value })
+	}
+
+	handleSearch = ()=> {
+		if(this.state.search === "") {
+			alert("Please Enter Something to search!!")
+		}
+	}
+
 	render() {
 		return (
 			<div className="dashboard">
@@ -49,6 +59,23 @@ class Dashboard extends React.Component {
 						<div>
 
 							<h1 > Questions </h1>
+
+							<MDBCol md="11" className="searchbar">
+								<div className="input-group md-form form-sm form-1 pl-0">
+									<div className="input-group-prepend">
+										<span className="input-group-text purple lighten-3" id="basic-text1">
+											<MDBIcon className="text-white" icon="search" />
+										</span>
+									</div>
+									<input className="form-control my-0 py-1" type="text" placeholder="Search" aria-label="Search" onChange={this.onSearchInputChange} />
+									<MDBBtn color="unique" rounded size="md" className="mr-auto searchbutton" onClick={this.handleSearch}>
+										Search
+        						</MDBBtn>
+								</div>
+
+							</MDBCol>
+
+
 
 							<FormControlLabel className="headeritem"
 								control={

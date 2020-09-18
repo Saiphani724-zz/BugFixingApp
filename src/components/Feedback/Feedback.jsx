@@ -9,8 +9,6 @@ import Chart from './Chart/Chart';
 
 
 function Feedback() {
-	
-
 	return (
 		<div class="feedbackpage">
 

@@ -5,14 +5,14 @@ import bulb from "./bestuu.png"
 import RichTextEditor from 'react-rte';
 
 export class AskQuestion extends Component {
-	constructor(props) {
-		super(props);
-	}
-
+	
 	state = {
-		value: RichTextEditor.createEmptyValue(),
+		value: RichTextEditor.createValueFromString("<p><br></br><br></br><br></br></p>" , 'html'),
 		'title': "",
-		'tags': ""
+		'tags': "",
+		'wrongTitleFormat': 0 , 
+		'wrongTagsFormat': 0 , 
+		'wrongQuestionFormat': 0 , 
 	}
 
 	onQuestionChange = (value) => {
@@ -34,7 +34,7 @@ export class AskQuestion extends Component {
 		this.setState({ 'tags': e.target.value })
 	}
 
-	postAnswer = (e) => {
+	postQuestion = (e) => {
 		var flag = 1;
 
 		this.setState(
@@ -61,6 +61,10 @@ export class AskQuestion extends Component {
 		if(flag){
 			alert("Posted Question");
 		}
+		else{
+			alert("Fill all Details");
+		}
+		console.log(this.state);
 	}
 
 
@@ -92,7 +96,7 @@ export class AskQuestion extends Component {
 					<Form >
 						<Form.Group controlId="exampleForm.ControlInput1">
 							<Form.Label><b>Title</b></Form.Label>
-							<Form.Control type="email" placeholder="Enter the title here" onChange={this.onTitleChange} />
+							<Form.Control type="text" placeholder="Enter the title here" onChange={this.onTitleChange} />
 						</Form.Group>
 
 						<Form.Group controlId="exampleForm.ControlTextarea1">
@@ -110,9 +114,9 @@ export class AskQuestion extends Component {
 							<Form.Control type="email" placeholder="Your tags go here" onChange={this.onTagsChange} />
 						</Form.Group>
 						<br></br>
-						<Button variant="primary" type="submit" onClick={this.postAnswer} >
+						<Button variant="primary" onClick={this.postQuestion} >
 							Post your Question
-          </Button>
+          					</Button>
 
 					</Form>
 				</div>

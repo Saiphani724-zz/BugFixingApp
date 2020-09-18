@@ -51,20 +51,24 @@ export class Register extends Component {
 				'wrongRollNoFormat': 0 , 
 			}
 		)
-
-		if (this.state.username === "") {
+		
+		
+		if (this.state.username.length <= 5 || this.state.username.length >= 15) {
 			this.setState({ 'wrongUsernameFormat': 1 })
 			flag = 0;
 		}
-		if(this.state.email === ""){
+
+		var mailformat = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+.+[a-zA-Z-])*$/;
+		if(this.state.email === ""  || !(this.state.email.match(mailformat) ))  {
 			this.setState({ 'wrongEmailFormat': 1 })
 			flag = 0;
 		}
-		if(this.state.password === ""){
+		var passw = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+		if(this.state.password === "" || !(this.state.password.match(passw) ))  {
 			this.setState({ 'wrongPasswordFormat': 1 })
 			flag = 0;
 		}
-		if(this.state.rollNo === ""){
+		if(this.state.rollNo.length <= 5 || this.state.rollNo.length >= 25) {
 			this.setState({ 'wrongRollNoFormat': 1 })
 			flag = 0;
 		}
@@ -188,7 +192,7 @@ export class Register extends Component {
 
 						{
 							this.state.wrongPasswordFormat ?
-								<p className="errormsg">Wrong Password Format</p>
+								<p className="errormsg">Password specs: >5 chars with atleast 1 small, 1capital, 1 num, 1 spec. char   </p>
 								: null
 						}
 

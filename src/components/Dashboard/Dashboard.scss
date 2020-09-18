@@ -1,6 +1,6 @@
 .dashboard{
 	h1 {
-		margin: 20px;
+		margin: 10px;
 		display: inline-block;
 		font-family: Georgia, 'Times New Roman', Times, serif;
 		position: relative;
@@ -8,16 +8,36 @@
 	}
 	.headeritem {
 		position: relative;
+		top: -135px;
 		left: 60%;
 		display: inline-block;
 		font-family: Georgia, 'Times New Roman', Times, serif;
 		font-weight: bold;
 		color: #000;
 	}
+
+	.searchbutton{
+		position: relative;
+		left: 60px;
+	}
+
+	.searchbar {
+		position: relative;
+		right: -40px;
+	}
 }
+
+
+
+.input-group.md-form.form-sm.form-1 input {
+	border: 1px solid #bdbdbd;
+	border-top-right-radius: 0.25rem;
+	border-bottom-right-radius: 0.25rem;
+    }
 
 .mycard {
 	height: 200px;
+	margin-top: -30px;
 	padding-top: 25px;
 	padding-left: 20%;	
 	padding-right: 3%;
