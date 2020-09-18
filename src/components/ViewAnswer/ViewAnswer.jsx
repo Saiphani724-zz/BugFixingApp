@@ -8,8 +8,19 @@ import { MDBCarousel, MDBBox, MDBIcon } from 'mdbreact';
 
 class ViewAnswer extends React.Component{
 	state = {
+    likes:0,
+    comment:''
 
-	}
+  }
+  handlelikeclick = (e) => {
+    e.preventDefault();
+    this.setState({likes:this.state.likes + 1});
+  }
+  handleshareclick = (e) => {
+    e.preventDefault()
+    alert(" Link generated. Please share this link:" + window.location.href);
+  }
+  
 render() {
 	return (
 		<div>
@@ -27,8 +38,8 @@ render() {
                   <p className="card-text">Question explanation goes here.</p>
                 </div>
                 <div className="card-footer text-right">
-					<MDBIcon icon="thumbs-up" className="m-3" />
-					<MDBIcon icon="comment" className="m-3"/>
+					<MDBIcon icon="thumbs-up" className="m-3" onClick={this.handlelikeclick} />{this.state.likes}
+					<MDBIcon icon="comment" className="m-3" onClick={this.handleshareclick}/>
 					<MDBIcon icon="bars" className="m-3" />
 					
                   </div>
