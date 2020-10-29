@@ -1,0 +1,2 @@
+INDEX VERSION 1.4+D:\Resources\bugfixingapp\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+1965174767.index

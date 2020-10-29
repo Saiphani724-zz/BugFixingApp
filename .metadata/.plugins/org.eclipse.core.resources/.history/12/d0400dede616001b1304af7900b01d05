@@ -1,0 +1,22 @@
+package backend_tomcat;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class AddServlet extends HttpServlet
+{
+	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException
+	{
+		res.setHeader("Access-Control-Allow-Origin", "*");
+	    res.setHeader("Access-Control-Allow-Methods", "POST");
+		String username = req.getParameter("username");
+		String password = req.getParameter("password");
+		
+		System.out.println(username + " "+ password);
+		
+		res.getWriter().println(String.format("<h1>%s %s</h1>", username , password));
+	}
+}

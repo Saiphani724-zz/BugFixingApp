@@ -1,0 +1,63 @@
+package backend_tomcat;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.stream.Collectors;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
+public class AddServlet extends HttpServlet
+{
+	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException
+	{
+		String username = req.getParameter("username");
+		String password = req.getParameter("password");
+		
+		System.out.println(username + " "+ password);
+//		System.out.println(req.getRequestURI());
+		
+//		Enumeration<String> params = req.getParameterNames(); 
+//		while(params.hasMoreElements()){
+//		 String paramName = params.nextElement();
+//		 System.out.println("Parameter Name - "+paramName+", Value - "+req.getParameter(paramName));
+//		}
+		
+		HttpServletRequest request = req;
+		if ("POST".equalsIgnoreCase(request.getMethod())) 
+		{
+		   String myjsonString = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+		}
+
+		
+        
+        
+//        out.print(employeeJsonString);
+        
+		
+		JSONObject json = new JSONObject();
+		try {
+			json.put("key", "value");
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+		               
+		res.setContentType("application/json");
+        res.setCharacterEncoding("UTF-8");
+		res.setHeader("Access-Control-Allow-Headers", "*");
+		res.setHeader("Access-Control-Allow-Origin", "*");
+	    res.setHeader("Access-Control-Allow-Methods", "POST,GET");
+	    PrintWriter out = res.getWriter();
+//		out.println(String.format("<h1>Details are %s %s</h1>", username , password));
+	    out.print(json.toString());
+		
+	}
+}
