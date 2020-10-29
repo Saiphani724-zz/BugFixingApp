@@ -12,6 +12,7 @@ import Profile from './components/Profile/Profile';
 import Feedback from './components/Feedback/Feedback';
 import './App.css';
 import robo from "./Robo.png"
+import cookie from 'react-cookies';
 
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
@@ -39,11 +40,16 @@ const notdefined = () => {
 
 class App extends Component {
     render = () => {
+
+	cookie.save('base_url', 'http://localhost:8091/backend' )
+
+
         return (
             <div>
                 <TopNavBar/>
                 <BrowserRouter>
                     <Switch>
+
                         <Route path='/' component={HomePage} exact/>
                         <Route path='/signin' component={Login}/>
                         <Route path='/about' component={About}/>

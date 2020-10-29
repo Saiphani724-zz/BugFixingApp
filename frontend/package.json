@@ -14,6 +14,7 @@
     "bootstrap": "^4.5.2",
     "ckeditor": "^4.12.1",
     "delay": "^4.2.0",
+    "fetch-readablestream": "^0.2.0",
     "mdbreact": "^4.27.0",
     "node-sass": "^4.14.1",
     "react": "^16.13.1",
@@ -49,5 +50,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:8091/backend/"
 }
