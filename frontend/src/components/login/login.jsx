@@ -2,6 +2,8 @@ import React from "react";
 import loginImg from "./login.svg";
 import cookie from 'react-cookies';
 
+import { useHistory } from "react-router-dom";
+
 import fetchStream from 'fetch-readablestream';
 
 export class Login extends React.Component {
@@ -24,6 +26,9 @@ export class Login extends React.Component {
 	}
 
 	verifyLogin = (username, password) => {
+
+		const history = useHistory();
+
 		
 		// var db = [
 		// 	{

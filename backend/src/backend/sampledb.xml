@@ -7,7 +7,9 @@
             <Full_Question>Why is processing a sorted array faster than processing an unsorted array?</Full_Question>
             <Creator_id>52U82</Creator_id>
             <Viewcount>64</Viewcount>
-            <Answer_count>64</Answer_count>
+		<Answer_count>64</Answer_count>
+		<Votes>10</Votes>
+		<Tags>Javascript,React</Tags>	
         </question>
         <question>
             <Ques_id>Q100000002</Ques_id>
@@ -15,6 +17,8 @@
             <Creator_id>C1W1M</Creator_id>
             <Viewcount>7</Viewcount>
             <Answer_count>98</Answer_count>
+		<Votes>-5</Votes>
+		<Tags>Nodejs,React,webdev,frontend</Tags>
         </question>
         <question>
             <Ques_id>Q100000003</Ques_id>
@@ -22,6 +26,8 @@
             <Creator_id>5MXRG</Creator_id>
             <Viewcount>84</Viewcount>
             <Answer_count>84</Answer_count>
+		<Votes>0</Votes>
+		<Tags>Github,webdev,frontend</Tags>
         </question>
         <question>
             <Ques_id>Q100000004</Ques_id>
@@ -29,6 +35,8 @@
             <Creator_id>5MXRG</Creator_id>
             <Viewcount>4</Viewcount>
             <Answer_count>88</Answer_count>
+		<Votes>0</Votes>
+		<Tags>Javascript,React,Github</Tags>
         </question>
         <question>
             <Ques_id>Q100000005</Ques_id>
@@ -36,6 +44,8 @@
             <Creator_id>WBSNK</Creator_id>
             <Viewcount>16</Viewcount>
             <Answer_count>47</Answer_count>
+		<Votes>0</Votes>
+		<Tags>Javascript,React,webdev,frontend</Tags>
         </question>
         <question>
             <Ques_id>Q100000006</Ques_id>
@@ -43,6 +53,8 @@
             <Creator_id>WBSNK</Creator_id>
             <Viewcount>16</Viewcount>
             <Answer_count>63</Answer_count>
+		<Votes>0</Votes>
+		<Tags>Javascript,React,webdev,frontend</Tags>
         </question>
         <question>
             <Ques_id>Q100000007</Ques_id>
@@ -50,6 +62,8 @@
             <Creator_id>RI0GP</Creator_id>
             <Viewcount>76</Viewcount>
             <Answer_count>54</Answer_count>
+		<Votes>0</Votes>
+		<Tags>Javascript,React,webdev,frontend</Tags>
         </question>
         <question>
             <Ques_id>Q100000008</Ques_id>
@@ -57,6 +71,8 @@
             <Creator_id>RI0GP</Creator_id>
             <Viewcount>61</Viewcount>
             <Answer_count>68</Answer_count>
+		<Votes>0</Votes>
+		<Tags>Javascript,React,webdev,frontend</Tags>
         </question>
         <question>
             <Ques_id>Q100000009</Ques_id>
@@ -64,6 +80,8 @@
             <Creator_id>IRT3I</Creator_id>
             <Viewcount>38</Viewcount>
             <Answer_count>65</Answer_count>
+		<Votes>0</Votes>
+		<Tags>Javascript,React,webdev,frontend</Tags>
         </question>
         <question>
             <Ques_id>Q100000010</Ques_id>
@@ -71,6 +89,8 @@
             <Creator_id>RI0GP</Creator_id>
             <Viewcount>47</Viewcount>
             <Answer_count>46</Answer_count>
+		<Votes>0</Votes>
+		<Tags>Javascript,React,webdev,frontend</Tags>
         </question>
     </questions>
     <answers>

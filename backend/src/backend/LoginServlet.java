@@ -6,15 +6,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.Statement;   
 import java.util.stream.Collectors;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-public class MyServer extends HttpServlet {
+ 
+public class LoginServlet extends HttpServlet {
 
 	// public static boolean equals(Object a, Object b) {
 	// return (a == b) || (a != null && a.equals(b));
@@ -22,7 +22,6 @@ public class MyServer extends HttpServlet {
 
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
-		
 
 		String username = "", password = "";
 //		username = req.getParameter("username");
@@ -34,6 +33,7 @@ public class MyServer extends HttpServlet {
 		HttpServletRequest request = req;
 		if ("POST".equalsIgnoreCase(request.getMethod())) {
 			String myjsonString = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+			
 			System.out.println(myjsonString);
 			System.out.println("Heyy");
 			try {
@@ -90,8 +90,6 @@ public class MyServer extends HttpServlet {
 		}
 
 		// out.print(employeeJsonString);
-
-
 
 		
 

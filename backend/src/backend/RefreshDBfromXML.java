@@ -49,6 +49,8 @@ public class RefreshDBfromXML  {
 	                    "	user_id varchar(50) not null, " +
 	                    "	viewcount numeric(10,0), " +
 	                    "	answer_count numeric(10,0), " +
+	                    "	votes numeric(10,0), " +
+	                    "   tags varchar(200)," + 
 	                    "	primary key(question_id), " +
 	                    "	foreign key(user_id) references USERS(user_id)" +
 	                    "	);";
@@ -68,7 +70,7 @@ public class RefreshDBfromXML  {
 	            statement.execute(createAnswersTable);
 
 
-	            File inputFile = new File("D:\\Resources\\bugfixingapp\\backend\\src\\backend\\sampledb.xml");
+	            File inputFile = new File("D:\\Projects\\bugfixingapp\\backend\\src\\backend\\sampledb.xml");
 
 	            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
@@ -111,9 +113,11 @@ public class RefreshDBfromXML  {
 	                String Creator_id = eElement.getElementsByTagName("Creator_id").item(0).getTextContent();
 	                String Viewcount = eElement.getElementsByTagName("Viewcount").item(0).getTextContent();
 	                String Answer_count = eElement.getElementsByTagName("Answer_count").item(0).getTextContent();
+	                String Votes = eElement.getElementsByTagName("Votes").item(0).getTextContent();
+	                String Tags = eElement.getElementsByTagName("Tags").item(0).getTextContent();
 
 
-	                String query = String.format("insert into QUESTIONS values ('%s', '%s', '%s', %s,%s) ;", Ques_id, Full_Question, Creator_id, Viewcount, Answer_count);
+	                String query = String.format("insert into QUESTIONS values ('%s', '%s', '%s', %s,%s ,%s, '%s') ;", Ques_id, Full_Question, Creator_id, Viewcount, Answer_count,Votes, Tags);
 //					System.out.println(query);
 	                statement.execute(query);
 	            }
