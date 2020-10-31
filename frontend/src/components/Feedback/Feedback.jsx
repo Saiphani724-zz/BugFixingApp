@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React  from 'react';
 import './Feedback.scss';
 
 import {Form, Button} from 'react-bootstrap';

@@ -1,4 +1,4 @@
-import React, {Component, PropTypes} from 'react';
+import React, {Component} from 'react';
 import {Form, Button} from 'react-bootstrap';
 import bulb from "./miracle.png"
 import RichTextEditor from 'react-rte';
@@ -86,7 +86,7 @@ export class AskQuestion extends Component {
         };
         return (
             <div class="imgQues">
-                <img src={bulb} alt="image"></img>
+                <img src={bulb} alt="bulb"></img>
 
                 <div class="askQues">
                     <Form>

@@ -2,9 +2,6 @@ import React from "react";
 import loginImg from "./login.svg";
 import cookie from 'react-cookies';
 
-import { useHistory } from "react-router-dom";
-
-import fetchStream from 'fetch-readablestream';
 
 export class Login extends React.Component {
 
@@ -27,9 +24,9 @@ export class Login extends React.Component {
 
 	verifyLogin = (username, password) => {
 
-		const history = useHistory();
+	
 
-		
+
 		// var db = [
 		// 	{
 		// 		'username': "psp",
@@ -71,20 +68,20 @@ export class Login extends React.Component {
 			}).then(() => {
 
 				var result = JSON.parse(chunks[0]);
-				
-				if(result['userstatus'] === "1"){
+
+				if (result['userstatus'] === "1") {
 					console.log(result);
 					cookie.save('username', username);
-					if(result['mentor_role'] === 't'){
+					if (result['mentor_role'] === 't') {
 						console.log("U r mentor");
 						cookie.save('mentor_role', true);
 					}
-					else{
+					else {
 						cookie.save('mentor_role', false);
 					}
 					window.location.href = '/dashboard';
 				}
-				else{
+				else {
 					alert("Retry Logging In!!");
 				}
 			});
