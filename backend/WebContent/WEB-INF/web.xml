@@ -8,4 +8,16 @@
   	<servlet-name>abc</servlet-name>
   	<url-pattern>/login</url-pattern>
   </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>registerServlet</servlet-name>
+  	<servlet-class>backend.RegisterServlet</servlet-class>
+  </servlet>
+  
+  
+  <servlet-mapping>
+  	<servlet-name>registerServlet</servlet-name>
+  	<url-pattern>/register</url-pattern>
+  </servlet-mapping>
 </web-app>
