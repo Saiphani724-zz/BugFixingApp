@@ -16,8 +16,7 @@ public class RefreshDBfromXML  {
 	 public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
 	        // TODO Auto-generated method stub
 
-	        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bfapp",
-	                "postgres", "1919")) {
+	        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/soni","postgres", "qwerty123")) {
 
 	            System.out.println("Java JDBC PostgreSQL Example");
 
@@ -70,7 +69,7 @@ public class RefreshDBfromXML  {
 	            statement.execute(createAnswersTable);
 
 
-	            File inputFile = new File("D:\\Projects\\bugfixingapp\\backend\\src\\backend\\sampledb.xml");
+	            File inputFile = new File("C:\\Users\\sonip\\NCP\\BugFixingApp\\backend\\src\\backend\\sampledb.xml");
 
 	            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();

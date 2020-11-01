@@ -14,16 +14,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
  
-public class LoginServlet extends HttpServlet {
-
-	// public static boolean equals(Object a, Object b) {
-	// return (a == b) || (a != null && a.equals(b));
-	// }
+public class RegisterServlet extends HttpServlet {
 
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
 
-		String username = "", password = "";
+		String username = "", password = "", dob = "", email = "", user_id = "";
 //		username = req.getParameter("username");
 //		password = req.getParameter("password");
 //		System.out.println(username + " " + password);
@@ -35,12 +31,15 @@ public class LoginServlet extends HttpServlet {
 			String myjsonString = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
 			
 			System.out.println(myjsonString);
-			System.out.println("Heyy");
+			// System.out.println("Heyy");
 			try {
 				JSONObject json = new JSONObject(myjsonString);
 				System.out.println(json);
 				username = json.get("username").toString();
 				password = json.get("password").toString();
+				dob = json.get("dob").toString();
+				email = json.get("email").toString();
+				user_id = json.get("user_id").toString();
 				System.out.println(username + " " + password);
 				
 				try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/soni","postgres", "qwerty123")) {
@@ -51,17 +50,22 @@ public class LoginServlet extends HttpServlet {
 					Statement statement = connection.createStatement();
 
 		            					
-					ResultSet rs = statement.executeQuery(String.format("select * from users where username = '%s' and password = '%s'", username,password )); 
+					ResultSet rs = statement.executeQuery(String.format("select * from users where (username = '%s' or email = '%s' or user_id = '%s')", username, email, user_id)); 
 
 		            if (rs.next()) {
 //		                System.out.print(rs.getString(2) + " ");
 //		                System.out.println(rs.getString(3));
-		            	jsontosend.put("userstatus", "1");
-		            	jsontosend.put("mentor_role", rs.getString("mentor_role"));
+		            	jsontosend.put("userexists", "1");
+						// jsontosend.put("mentor_role", rs.getString("mentor_role"));
+						// System.out.println("Username already exists");
 		            }
 		            else
 		            {
-		            	jsontosend.put("userstatus", "0");
+						// jsontosend.put("userstatus", "1");
+						jsontosend.put("userexists", "0");
+						String query = String.format("insert into users values ('%s', '%s', '%s', '%s',%s,'%s') ;", email, username, password, dob, "false", user_id);
+						statement.execute(query);
+						// System.out.println(query+"jooo");
 		            }
 		            
 //		            try {

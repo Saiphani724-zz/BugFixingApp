@@ -77,10 +77,10 @@ export class Register extends Component {
 			flag = 0;
 		}
 
-
-		if (flag) {
-			alert("User Registration done");
-		}
+		return flag;
+		// if (flag) {
+		// 	alert("User Registration done");
+		// }
 
 	}
 
@@ -88,22 +88,53 @@ export class Register extends Component {
 		window.location.href = window.location.origin + '/'
 	}
 
+
+	
+
 	handleRegister = () => {
-		var ipaddress = cookie.load('ipaddress');
-		fetch(`http://${ipaddress}:5000/register?username=${this.state.username}&&password=${this.state.password}&&email=${this.state.email}&&rollNo=${this.state.rollNo}&&mobile=${this.state.mobile}`, {
-			method: 'GET',
-		}).then(res => res.json())
-			.then(data => this.setState(
-				() => (data),
-				function () {
-					console.log(this.state);
-					if (this.state.isRegisterSuccess) {
-						window.location.href = window.location.origin + '/'
-						alert('Successfully Registered\nLogin to use the App');
-					} else {
-						alert('User already exits\nTry a different Username');
-					}
-				}));
+		// console.log(this.state);
+
+		var tobesent = {
+			"username": this.state.username,
+			"password": this.state.password,
+			"email": this.state.email,
+			"dob": this.state.date,
+			"user_id": this.state.rollNo
+		}
+		console.log(tobesent+"from register");
+		var base_url = cookie.load('base_url');
+		const chunks = [];
+		fetch(`${base_url}/register`, {
+			method: 'POST',
+			headers: {
+				"Content-Type": "application/json",
+				"Access-Control-Allow-Headers": "*",
+				"Access-Control-Allow-Origin": "*",
+				"Access-Control-Allow-Methods": "POST,GET",
+			},
+			body: JSON.stringify(tobesent)
+		}).then(function (response) {
+			const reader = response.body.getReader();
+
+			reader.read().then(({ value, done }) => {
+				var string = new TextDecoder("utf-8").decode(value);
+				chunks.push(string);
+			}).then(() => {
+
+				var result = JSON.parse(chunks[0]);
+				
+				if(result['userexists'] === "1"){
+					alert("User already exists!")
+					console.log(result);
+					
+				}
+				else{
+					window.location.href = '/signin';
+				}
+				
+			});
+		})
+
 	}
 
 	render() {
@@ -193,10 +224,11 @@ export class Register extends Component {
 
 						{
 							this.state.wrongPasswordFormat ?
-								<p className="errormsg">Password specs: >5 chars with atleast 1 small, 1capital, 1 num,
-                                    1 spec. char </p>
+								<p className="errormsg">Password specs: >5 chars with atleast 1 small, 1capital, 1 num,                                 1 spec. char </p>
 								: null
 						}
+
+
 
 						<Button />
 

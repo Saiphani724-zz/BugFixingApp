@@ -17,25 +17,22 @@ import {
 class Question extends Component {
 
 	handleButtonClick = () => {
-
-		// cookie.save('quizCode', this.props.id, { path: '/' })
-		// window.location.href = window.location.origin + '/viewResult'
-		console.log('/aslasviewaasanswer');
+		cookie.save('Ques_id', this.props.Ques_id);
+		console.log(this.props.Ques_id);
+		window.location.href = window.location.origin + '/viewAnswer'
 	}
 
-	render() {
+	render() { 
 		var colors = ['purple-gradient', 'aqua-gradient', 'peach-gradient', 'blue-gradient'];
 
 		return (
-
-
 			<MDBRow className="mycard">
 				<MDBCol>
 					<MDBCard>
 						<MDBCardImage
 							className={colors[this.props.flag]}
 							tag='div'>
-							<a href={this.handleButtonClick}><h5 className="question">{this.props.Full_Question}</h5></a>
+							<a onClick={this.handleButtonClick}><h5 className="question">{this.props.Full_Question}</h5></a>
 						</MDBCardImage>
 						<div className="body">
 							<span className="details">
