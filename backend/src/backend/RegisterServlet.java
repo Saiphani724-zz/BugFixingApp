@@ -36,7 +36,6 @@ public class RegisterServlet extends HttpServlet {
 				dob = json.get("dob").toString();
 				email = json.get("email").toString();
 				user_id = json.get("user_id").toString();
-				System.out.println(username + " " + password);
 				
 				try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bfapp","postgres", "1919")) {
 

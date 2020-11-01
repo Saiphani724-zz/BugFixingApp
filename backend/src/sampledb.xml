@@ -5,7 +5,7 @@
         <question>
             <Ques_id>Q100000001</Ques_id>
             <Full_Question>Why is processing a sorted array faster than processing an unsorted array?</Full_Question>
-            <Creator_id>52U82</Creator_id>
+            <Creator_id>70204</Creator_id>
             <Viewcount>64</Viewcount>
 		<Answer_count>64</Answer_count>
 		<Votes>10</Votes>
@@ -23,7 +23,7 @@
         <question>
             <Ques_id>Q100000003</Ques_id>
             <Full_Question>How do I delete a Git branch locally and remotely?</Full_Question>
-            <Creator_id>5MXRG</Creator_id>
+            <Creator_id>70204</Creator_id>
             <Viewcount>84</Viewcount>
             <Answer_count>84</Answer_count>
 		<Votes>0</Votes>

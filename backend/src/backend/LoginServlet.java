@@ -23,7 +23,7 @@ public class LoginServlet extends HttpServlet {
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
 
-		String username = "", password = "";
+		String username = "", password = "", user_id = "";
 //		username = req.getParameter("username");
 //		password = req.getParameter("password");
 //		System.out.println(username + " " + password);
@@ -40,6 +40,7 @@ public class LoginServlet extends HttpServlet {
 				System.out.println(json);
 				username = json.get("username").toString();
 				password = json.get("password").toString();
+					
 				System.out.println(username + " " + password);
 				
 				try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bfapp","postgres", "1919")) {
@@ -55,6 +56,8 @@ public class LoginServlet extends HttpServlet {
 //		                System.out.print(rs.getString(2) + " ");
 //		                System.out.println(rs.getString(3));
 		            	jsontosend.put("userstatus", "1");
+		            	
+		            	jsontosend.put("user_id", rs.getString("user_id"));
 		            	jsontosend.put("mentor_role", rs.getString("mentor_role"));
 		            }
 		            else

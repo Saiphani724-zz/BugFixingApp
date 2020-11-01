@@ -11,16 +11,16 @@ import Question from '../Dashboard/Question/Question.jsx';
 
 import {
 	MDBBtn,
-	MDBCard,
+	MDBIcon,
+	// MDBCard,
 	// MDBCardBody,
-	MDBCardImage,
+	// MDBCardImage,
 	// MDBCardTitle,
 	// MDBCardText,
-	MDBRow,
+	// MDBRow,
 	MDBCol,
-	MDBIcon
+	// MDBIcon
 } from 'mdbreact';
-
 
 class Dashboard extends React.Component {
 
@@ -35,6 +35,8 @@ class Dashboard extends React.Component {
 			window.location.href = '/signin';
 		} else {
 			this.setState({ 'username': username });
+			var user_id = cookie.load('user_id');
+			this.setState({ 'user_id': user_id });
 		}
 
 		let self = this;
@@ -64,6 +66,9 @@ class Dashboard extends React.Component {
 				result = JSON.parse(chunks[0]);
 			}).then(() => {
 				self.setState({ questions: result });
+				self.setState({
+					'filteredQuestions': result
+				});
 				console.log(self.state);
 			}
 			);
@@ -72,7 +77,22 @@ class Dashboard extends React.Component {
 	}
 
 	onSearchInputChange = (e) => {
-		this.setState({ 'search': e.target.value })
+		this.setState({ 'search': e.target.value });
+		
+		if (this.state.search.trim().length == 0) {
+			this.setState({
+				'filteredQuestions': this.state.questions
+			})
+		}
+		else {
+			this.setState({
+				'filteredQuestions': this.state.questions.filter(ques => {
+					return ques.Full_Question.toLowerCase().includes(this.state.search.toLowerCase())
+				})
+			})
+		}
+
+		console.log(this.state.filteredQuestions);
 	}
 
 	handleSearch = () => {
@@ -116,7 +136,9 @@ class Dashboard extends React.Component {
 								control={
 									<Checkbox
 										checked={this.state.checkedB}
-										onChange=""
+										onChange={() => {
+											this.setState({ checkedB: !this.state.checkedB })
+										}}
 										name="checkedB"
 										color="Secondary"
 									/>
@@ -125,12 +147,19 @@ class Dashboard extends React.Component {
 
 							<h4 className="headeritem"> Your Questions</h4>
 						</div>
-						
+
 						{
-							this.state.questions == null ?
+							this.state.filteredQuestions == null ?
 								<h1>Component loading wait</h1> :
-								this.state.questions.map(ques => {
-									return <Question Ques_id = {ques.Ques_id} Full_Question = {ques.Full_Question} Creator_id = {ques.Creator_id} Viewcount = {ques.Viewcount} Answer_count = {ques.Answer_count} Votes = {ques.Votes} Tags = {ques.Tags.split(',')} flag={[flag++] % 4} />
+								this.state.filteredQuestions.map(ques => {
+									return <div>
+										{
+											(!(this.state.checkedB == true) || this.state.user_id == ques.Creator_id) ?
+												<Question Ques_id={ques.Ques_id} Full_Question={ques.Full_Question} Creator_id={ques.Creator_id} Viewcount={ques.Viewcount} Answer_count={ques.Answer_count} Votes={ques.Votes} Tags={ques.Tags.split(',')} flag={[flag++] % 4} />
+												: null
+										}
+									</div>
+
 								})
 						}
 

@@ -72,6 +72,7 @@ export class Login extends React.Component {
 				if (result['userstatus'] === "1") {
 					console.log(result);
 					cookie.save('username', username);
+					cookie.save('user_id', result['user_id']);
 					if (result['mentor_role'] === 't') {
 						console.log("U r mentor");
 						cookie.save('mentor_role', true);

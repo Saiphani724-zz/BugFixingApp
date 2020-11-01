@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Card, Button } from 'react-bootstrap';
 import cookie from 'react-cookies';
 
 import {
-	MDBBtn,
+	// MDBBtn,
 	MDBCard,
 	// MDBCardBody,
 	MDBCardImage,
@@ -11,7 +10,7 @@ import {
 	// MDBCardText,
 	MDBRow,
 	MDBCol,
-	MDBIcon
+	// MDBIcon
 } from 'mdbreact';
 
 class Question extends Component {
@@ -19,7 +18,6 @@ class Question extends Component {
 	handleButtonClick = () => {
 		cookie.save('Ques_id', this.props.Ques_id);
 		console.log(this.props.Ques_id);
-		window.location.href = window.location.origin + '/viewAnswer'
 	}
 
 	render() { 
@@ -32,7 +30,7 @@ class Question extends Component {
 						<MDBCardImage
 							className={colors[this.props.flag]}
 							tag='div'>
-							<a onClick={this.handleButtonClick}><h5 className="question">{this.props.Full_Question}</h5></a>
+							<a href="/viewAnswer" onClick={this.handleButtonClick}><h5 className="question">{this.props.Full_Question}</h5></a>
 						</MDBCardImage>
 						<div className="body">
 							<span className="details">
@@ -59,6 +57,7 @@ class Question extends Component {
 											return <span className="tag">{tag}</span>
 										})
 								}
+								{/* <span className="tag">{this.props.Creator_id}</span> */}
 								{/* <span className="tag">{this.props.Tags}</span>
 								<span className="tag">webdev</span>
 								<span className="tag">react</span>
