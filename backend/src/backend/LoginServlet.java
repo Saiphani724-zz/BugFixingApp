@@ -35,7 +35,6 @@ public class LoginServlet extends HttpServlet {
 			String myjsonString = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
 			
 			System.out.println(myjsonString);
-			System.out.println("Heyy");
 			try {
 				JSONObject json = new JSONObject(myjsonString);
 				System.out.println(json);
@@ -43,9 +42,8 @@ public class LoginServlet extends HttpServlet {
 				password = json.get("password").toString();
 				System.out.println(username + " " + password);
 				
-				try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/soni","postgres", "qwerty123")) {
+				try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bfapp","postgres", "1919")) {
 
-					System.out.println("Java JDBC PostgreSQL Example");
 					System.out.println("Connected to PostgreSQL database!");
 
 					Statement statement = connection.createStatement();
@@ -92,7 +90,7 @@ public class LoginServlet extends HttpServlet {
 
 		
 
-		// res.setContentType("application/json");
+		 res.setContentType("application/json");
 		// res.setCharacterEncoding("UTF-8");
 		res.setHeader("Access-Control-Allow-Headers", "*");
 		res.setHeader("Access-Control-Allow-Origin", "*");

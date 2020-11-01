@@ -15,14 +15,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
  
 public class RegisterServlet extends HttpServlet {
-
+			 
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
 
 		String username = "", password = "", dob = "", email = "", user_id = "";
-//		username = req.getParameter("username");
-//		password = req.getParameter("password");
-//		System.out.println(username + " " + password);
 		
 		JSONObject jsontosend = new JSONObject();
 
@@ -31,7 +28,6 @@ public class RegisterServlet extends HttpServlet {
 			String myjsonString = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
 			
 			System.out.println(myjsonString);
-			// System.out.println("Heyy");
 			try {
 				JSONObject json = new JSONObject(myjsonString);
 				System.out.println(json);
@@ -42,9 +38,8 @@ public class RegisterServlet extends HttpServlet {
 				user_id = json.get("user_id").toString();
 				System.out.println(username + " " + password);
 				
-				try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/soni","postgres", "qwerty123")) {
+				try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bfapp","postgres", "1919")) {
 
-					System.out.println("Java JDBC PostgreSQL Example");
 					System.out.println("Connected to PostgreSQL database!");
 
 					Statement statement = connection.createStatement();
@@ -53,33 +48,14 @@ public class RegisterServlet extends HttpServlet {
 					ResultSet rs = statement.executeQuery(String.format("select * from users where (username = '%s' or email = '%s' or user_id = '%s')", username, email, user_id)); 
 
 		            if (rs.next()) {
-//		                System.out.print(rs.getString(2) + " ");
-//		                System.out.println(rs.getString(3));
 		            	jsontosend.put("userexists", "1");
-						// jsontosend.put("mentor_role", rs.getString("mentor_role"));
-						// System.out.println("Username already exists");
 		            }
 		            else
 		            {
-						// jsontosend.put("userstatus", "1");
 						jsontosend.put("userexists", "0");
 						String query = String.format("insert into users values ('%s', '%s', '%s', '%s',%s,'%s') ;", email, username, password, dob, "false", user_id);
 						statement.execute(query);
-						// System.out.println(query+"jooo");
 		            }
-		            
-//		            try {
-//		    			String a = username;
-//		    			String b = "psp";
-//
-//		    			if ((a == b) || (a != null && a.equals(b))) {
-//		    				jsontosend.put("userstatus", "1");
-//		    			} else {
-//		    				jsontosend.put("userstatus", "0");
-//		    			}
-//		    		} catch (JSONException e) {
-//		    			e.printStackTrace();
-//		    		}
 
 				} catch (SQLException e) {
 					e.printStackTrace();
@@ -92,22 +68,15 @@ public class RegisterServlet extends HttpServlet {
 			}
 		}
 
-		// out.print(employeeJsonString);
 
 		
-
-		// res.setContentType("application/json");
-		// res.setCharacterEncoding("UTF-8");
+		res.setContentType("application/json");
 		res.setHeader("Access-Control-Allow-Headers", "*");
 		res.setHeader("Access-Control-Allow-Origin", "*");
 		res.setHeader("Access-Control-Allow-Methods", "POST,GET");
 		PrintWriter out = res.getWriter();
-		// out.println(String.format("<h1>Details are %s %s</h1>", username ,
-		// password));
-		// out.println(String.format(" %s %s ", username , password));
 		out.print(jsontosend.toString());
-		// out.print(json.toString());
-		// out.flush();
-		// out.close();
+		 out.flush();
+		 out.close();
 	}
 }

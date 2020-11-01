@@ -16,7 +16,7 @@ public class RefreshDBfromXML  {
 	 public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
 	        // TODO Auto-generated method stub
 
-	        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/soni","postgres", "qwerty123")) {
+	        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bfapp","postgres", "1919")) {
 
 	            System.out.println("Java JDBC PostgreSQL Example");
 

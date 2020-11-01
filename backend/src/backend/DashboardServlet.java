@@ -27,7 +27,7 @@ public class DashboardServlet extends HttpServlet {
 		try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bfapp",
 				"postgres", "1919")) {
 
-			System.out.println("Connected to PostgreSQL database!");
+			System.out.println("Connected to PostgreSQL database! - DashboardPage");
 
 			Statement statement = connection.createStatement();
 

@@ -101,7 +101,7 @@ export class Register extends Component {
 			"dob": this.state.date,
 			"user_id": this.state.rollNo
 		}
-		console.log(tobesent+"from register");
+		console.log(tobesent);
 		var base_url = cookie.load('base_url');
 		const chunks = [];
 		fetch(`${base_url}/register`, {
