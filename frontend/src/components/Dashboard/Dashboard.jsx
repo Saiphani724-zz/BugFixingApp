@@ -48,10 +48,7 @@ class Dashboard extends React.Component {
 		fetch(`${base_url}/dashboard`, {
 			method: 'POST',
 			headers: {
-				"Content-Type": "application/json",
-				"Access-Control-Allow-Headers": "*",
-				"Access-Control-Allow-Origin": "*",
-				"Access-Control-Allow-Methods": "POST,GET",
+				
 			},
 			body: ""
 		}).then(function (response) {

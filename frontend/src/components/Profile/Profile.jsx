@@ -10,20 +10,70 @@ import {
 } from 'mdbreact';
 
 class Profile extends React.Component {
-    state = {
-        'username': '',
-        'asked': 0,
-        'answered': 0,
-
+    constructor(props){
+        super(props);
+        this.state = {
+            username: '',
+            email:'',
+            asked: 0,
+            answered: 0,
+            DOB:'',
+            mentor_role:0,
+            user_id:"anonymous",
+    
+        }
     }
+    
 
     componentDidMount() {
-        var username = cookie.load('username');
-        if (username === undefined) {
+        var usernam = cookie.load('username');
+        var userid = cookie.load('user_id');
+        var mentor_rol = cookie.load('mentor_role');
+        if (usernam === undefined) {
             window.location.href = '/signin';
         } else {
-            this.setState({'username': username});
+            this.setState({username: usernam});
         }
+        if (mentor_rol === undefined || mentor_rol === false) {
+            this.setState({mentor_role: 0})
+        } else {
+            this.setState({ mentor_role: 1});
+        }
+
+        let self = this;
+
+		const chunks = [];
+		var result = " not updated";
+		var base_url = cookie.load('base_url');
+
+		fetch(`${base_url}/profile`, {
+			method: 'POST',
+			headers: {
+				
+			},
+			body: JSON.stringify({"user_id":userid})
+		}).then(function (response) {
+
+			const reader = response.body.getReader();
+
+			reader.read().then(({ value, done }) => {
+				var string = new TextDecoder("utf-8").decode(value);
+				chunks.push(string);
+			}).then(() => {
+				console.log(chunks[0]);
+                result = JSON.parse(chunks[0]);
+                console.log("results:"+JSON.stringify(result))
+			}).then(() => {
+                self.setState({username:result[0].username });
+                self.setState({email:result[0].email});
+                self.setState({DOB:result[0].dob});
+                self.setState({user_id:userid});
+                self.setState({asked:result[0].q_count});
+                self.setState({answered:result[0].ans_count});
+				});
+				console.log(self.state);
+			});
+		
     }
 
 
@@ -37,10 +87,10 @@ class Profile extends React.Component {
                                           src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg"/>
                             <MDBCardBody cascade className="text-center">
                                 <MDBCardTitle>{this.state.username}</MDBCardTitle>
-                                <MDBCardText className="text-center">{(this.state.username === 'sachmo') ?
+                                <MDBCardText className="text-center">{(this.state.mentor_role === 1) ?
                                     <h4>Moderator</h4> : <h4>User</h4>}</MDBCardText>
-                                <h5 className="indigo-text"><strong>Company Name</strong></h5>
-                                <MDBCardText>This is my Bio.. Have a quick peek ;)</MDBCardText>
+                                <h5 className="indigo-text"><strong>{this.state.user_id}</strong></h5>
+                                <MDBCardText>{this.state.email}<br/>{this.state.DOB}</MDBCardText>
                                 <MDBIcon icon="star"/><MDBIcon icon="star"/><MDBIcon icon="star"/><MDBIcon icon="star"/><MDBIcon
                                 icon="star"/><br/>
                                 <a href="#!" className="icons-sm li-ic ml-1">
