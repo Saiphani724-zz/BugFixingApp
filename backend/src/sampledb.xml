@@ -104,6 +104,7 @@
             <ques_id>Q100000001</ques_id>
             <answered_person_id>IRT3I</answered_person_id>
             <acceptance_status>1.0</acceptance_status>
+            <like_count>500</like_count>
         </answer>
         <answer>
             <answer_id>A100000002</answer_id>
@@ -118,6 +119,7 @@
             <ques_id>Q100000002</ques_id>
             <answered_person_id>RI0GP</answered_person_id>
             <acceptance_status>0.0</acceptance_status>
+            <like_count>500</like_count>
         </answer>
         <answer>
             <answer_id>A100000003</answer_id>
@@ -132,6 +134,7 @@
             <ques_id>Q100000003</ques_id>
             <answered_person_id>91ZV7</answered_person_id>
             <acceptance_status>0.5</acceptance_status>
+            <like_count>500</like_count>
         </answer>
         <answer>
             <answer_id>A100000004</answer_id>
@@ -151,6 +154,7 @@
             <ques_id>Q100000004</ques_id>
             <answered_person_id>IRT3I</answered_person_id>
             <acceptance_status>1.0</acceptance_status>
+            <like_count>500</like_count>
         </answer>
         <answer>
             <answer_id>A100000005</answer_id>
@@ -159,6 +163,7 @@
             <ques_id>Q100000005</ques_id>
             <answered_person_id>O1FSO</answered_person_id>
             <acceptance_status>0.0</acceptance_status>
+            <like_count>500</like_count>
         </answer>
         <answer>
             <answer_id>A100000006</answer_id>
@@ -173,6 +178,7 @@
             <ques_id>Q100000006</ques_id>
             <answered_person_id>C1W1M</answered_person_id>
             <acceptance_status>1.0</acceptance_status>
+            <like_count>500</like_count>
         </answer>
         <answer>
             <answer_id>A100000007</answer_id>
@@ -189,6 +195,7 @@
             <ques_id>Q100000007</ques_id>
             <answered_person_id>5MXRG</answered_person_id>
             <acceptance_status>1.0</acceptance_status>
+            <like_count>500</like_count>
         </answer>
         <answer>
             <answer_id>A100000008</answer_id>
@@ -201,6 +208,7 @@
             <ques_id>Q100000008</ques_id>
             <answered_person_id>GN2B2</answered_person_id>
             <acceptance_status>1.0</acceptance_status>
+            <like_count>500</like_count>
         </answer>
         <answer>
             <answer_id>A100000009</answer_id>
@@ -218,6 +226,7 @@
             <ques_id>Q100000009</ques_id>
             <answered_person_id>X9Z2K</answered_person_id>
             <acceptance_status>0.5</acceptance_status>
+            <like_count>500</like_count>
         </answer>
         <answer>
             <answer_id>A100000010</answer_id>
@@ -225,6 +234,7 @@
             <ques_id>Q100000010</ques_id>
             <answered_person_id>WBSNK</answered_person_id>
             <acceptance_status>1.0</acceptance_status>
+            <like_count>500</like_count>
         </answer>
     </answers>
     <users>
