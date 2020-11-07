@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -17,15 +16,15 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class ViewAnswersServlet extends HttpServlet {
-	
+public class UpdateLikesOnAnswerServlet extends HttpServlet {
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
-
+		
+		
 		ArrayList<JSONObject> ar = new ArrayList();
 
 		JSONObject json = new JSONObject();
 		
-		String ques_id = "";
+		String ans_id = "",likes_prev = "";
 		JSONObject jsontosend = new JSONObject();
 		HttpServletRequest request = req;
 		if("POST".equalsIgnoreCase(request.getMethod())) {
@@ -35,8 +34,10 @@ public class ViewAnswersServlet extends HttpServlet {
 			//System.out.println(ques_id);
 			try {
 				json = new JSONObject(myjsonString);
-				ques_id = json.getString("Ques_id").toString();
-				System.out.println(ques_id);
+				ans_id = json.getString("Ans_id").toString();
+				likes_prev = json.getString("likes_prev").toString();
+				
+				System.out.println(ans_id);
 			} catch (JSONException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -44,52 +45,28 @@ public class ViewAnswersServlet extends HttpServlet {
 		try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/mydb",
 				"sachmo", "sachmoadi1-")) {
 
-			System.out.println("Connected to PostgreSQL database! - ViewAnswersPage");
+			System.out.println("Connected to PostgreSQL database! - UpdateLikesPage");
 			
-			String question="anonymous",creator="anonymous";
+			String likes_count_updated = "-1";
 			Statement statement = connection.createStatement();
 			try {
-				ResultSet rs1 = statement.executeQuery(String.format("select question_id,question,user_id from questions where question_id LIKE '%s'",ques_id)); 
+				int likes = Integer.valueOf(likes_prev);
+				statement.executeUpdate(String.format("UPDATE answers set like_count = '%s' where answer_id = '%s' ",String.valueOf(likes+1),ans_id));
+				ResultSet rs1 = statement.executeQuery(String.format("Select like_count from answers where answer_id LIKE '%s' ",ans_id));
 				if(rs1.next()) {
-					question = rs1.getString("question");
-					creator = rs1.getString("user_id");
+					likes_count_updated = rs1.getString("like_count");
+					json = new JSONObject();
+					json.put("ans_id",ans_id);
+					json.put("likes_new",likes_count_updated);
+					ar.add(json);
+					System.out.println(json.toString());
 				}
 				
 			}catch(Exception e) {
-				
-			}
-			try {
-			ResultSet rs = statement.executeQuery(String.format("select * from answers where question_id = '%s'", ques_id));
-			
-			while(rs.next()) {
-				json = new JSONObject();
-				String ans_id = rs.getString("answer_id");
-				String full_ans = rs.getString("full_answer");
-				String question_id = rs.getString("question_id");
-				String user_id = rs.getString("user_id");
-				String accp = rs.getString("acceptance_status");
-				String like_count = rs.getString("like_count");
-				json.put("answer_id",ans_id);
-				json.put("full_answer", full_ans);
-				json.put("question_id",question_id);
-				json.put("user_id", user_id);
-				json.put("accp", accp);
-				json.put("question", question);
-				json.put("creator_id", creator);
-				json.put("like_count", like_count);
-				System.out.println(json.toString());
-				ar.add(json);
-				
-			}
-
-			
-
-				
-
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+				
 			}
+			
 
 			// System.out.println("Got req");
 			res.setContentType("application/json");
@@ -107,8 +84,7 @@ public class ViewAnswersServlet extends HttpServlet {
 		}
 
 	}
-	
+		
+	}
 
-}
-	
 }

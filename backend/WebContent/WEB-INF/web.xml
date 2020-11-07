@@ -47,6 +47,15 @@
 		<url-pattern>/profile</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>UpdateLikesOnAnswerServlet</servlet-name>
+		<servlet-class>backend.UpdateLikesOnAnswerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateLikesOnAnswerServlet</servlet-name>
+		<url-pattern>/update_like</url-pattern>
+	</servlet-mapping>
+	
 	<filter>
     <filter-name>CorsFilter</filter-name>
     <filter-class>backend.CORSFilter</filter-class>

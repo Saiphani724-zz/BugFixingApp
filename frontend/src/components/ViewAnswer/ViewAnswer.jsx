@@ -57,6 +57,7 @@ class ViewAnswer extends React.Component {
                     self.setState({ answers: result });
                     
                     console.log(self.state.answers);
+                    console.log(self.state.answers[0].like_count);
                 }
                 );
             })
@@ -108,9 +109,9 @@ class ViewAnswer extends React.Component {
                                         this.state.answers.map(ans=> {
                                             return <div>
                                                 {
-                                                    <Answer userid={ans.user_id} full_answer={ans.full_answer} accp={ans.accp} />
+                                                    <Answer ans_id={ans.answer_id} userid={ans.user_id} full_answer={ans.full_answer} likes={ans.like_count} accp={ans.accp}/>
                                                 }
-                                            </div>
+                                            </div>  
                                         })
                                     }
                                     
