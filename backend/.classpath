@@ -13,7 +13,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="D:/Projects/BugFixingApp/backend/WebContent/WEB-INF/lib/postgresql-42.2.16.jar"/>
-	<classpathentry kind="lib" path="D:/Projects/BugFixingApp/backend/WebContent/WEB-INF/lib/java-json.jar"/>
+	<classpathentry kind="lib" path="/home/sachmo/Documents/NCP_SEM7/PROJECT/BugFixingApp/backend/WebContent/WEB-INF/lib/java-json.jar"/>
+	<classpathentry kind="lib" path="/home/sachmo/Documents/NCP_SEM7/PROJECT/BugFixingApp/Tomcat 9.0/lib/cors-filter-2.9.jar"/>
+	<classpathentry kind="lib" path="/home/sachmo/Documents/NCP_SEM7/PROJECT/BugFixingApp/Tomcat 9.0/lib/postgresql-42.2.16.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

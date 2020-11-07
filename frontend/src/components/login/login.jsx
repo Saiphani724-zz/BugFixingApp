@@ -53,10 +53,7 @@ export class Login extends React.Component {
 		fetch(`${base_url}/login`, {
 			method: 'POST',
 			headers: {
-				"Content-Type": "application/json",
-				"Access-Control-Allow-Headers": "*",
-				"Access-Control-Allow-Origin": "*",
-				"Access-Control-Allow-Methods": "POST,GET",
+				
 			},
 			body: JSON.stringify(tobesent)
 		}).then(function (response) {

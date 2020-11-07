@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
 					
 				System.out.println(username + " " + password);
 				
-				try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bfapp","postgres", "1919")) {
+				try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/mydb","sachmo", "sachmoadi1-")) {
 
 					System.out.println("Connected to PostgreSQL database!");
 
