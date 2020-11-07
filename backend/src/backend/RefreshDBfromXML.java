@@ -63,6 +63,7 @@ public class RefreshDBfromXML  {
 	                    + " question_id varchar(50),"
 	                    + " user_id varchar(50),"
 	                    + " acceptance_status numeric(1,0),"
+	                    +" like_count numeric(7,0),"
 	                    + " primary key(answer_id),"
 	                    + " foreign key(user_id) references USERS(user_id));";
 
@@ -133,9 +134,9 @@ public class RefreshDBfromXML  {
 	                String ques_id = eElement.getElementsByTagName("ques_id").item(0).getTextContent();
 	                String answered_person_id = eElement.getElementsByTagName("answered_person_id").item(0).getTextContent();
 	                String acceptance_status = eElement.getElementsByTagName("acceptance_status").item(0).getTextContent();
-
+	                String likes_count = eElement.getElementsByTagName("like_count").item(0).getTextContent();
 	                full_answer = full_answer.replace("'", "\"");
-	                String query = String.format("insert into answers values ('%s', '%s', '%s', '%s',%s) ;", answer_id, full_answer, ques_id, answered_person_id, acceptance_status);
+	                String query = String.format("insert into answers values ('%s', '%s', '%s', '%s',%s, %s) ;", answer_id, full_answer, ques_id, answered_person_id, acceptance_status,likes_count);
 //					System.out.println(query);
 	                statement.execute(query);
 	            }

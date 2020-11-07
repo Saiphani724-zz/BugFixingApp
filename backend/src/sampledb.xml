@@ -229,9 +229,65 @@
             <like_count>500</like_count>
         </answer>
         <answer>
-            <answer_id>A100000010</answer_id>
+            <answer_id>A100000011</answer_id>
             <full_answer>array.remove(number);</full_answer>
-            <ques_id>Q100000010</ques_id>
+            <ques_id>Q100000002</ques_id>
+            <answered_person_id>WBSNK</answered_person_id>
+            <acceptance_status>1.0</acceptance_status>
+            <like_count>500</like_count>
+        </answer>
+        <answer>
+            <answer_id>A100000012</answer_id>
+            <full_answer>array.remove(number);</full_answer>
+            <ques_id>Q100000003</ques_id>
+            <answered_person_id>WBSNK</answered_person_id>
+            <acceptance_status>1.0</acceptance_status>
+            <like_count>500</like_count>
+        </answer>
+        <answer>
+            <answer_id>A100000013</answer_id>
+            <full_answer>array.remove(number);</full_answer>
+            <ques_id>Q100000004</ques_id>
+            <answered_person_id>WBSNK</answered_person_id>
+            <acceptance_status>1.0</acceptance_status>
+            <like_count>500</like_count>
+        </answer>
+        <answer>
+            <answer_id>A100000014</answer_id>
+            <full_answer>array.remove(number);</full_answer>
+            <ques_id>Q100000005</ques_id>
+            <answered_person_id>WBSNK</answered_person_id>
+            <acceptance_status>1.0</acceptance_status>
+            <like_count>500</like_count>
+        </answer>
+        <answer>
+            <answer_id>A100000015</answer_id>
+            <full_answer>array.remove(number);</full_answer>
+            <ques_id>Q100000006</ques_id>
+            <answered_person_id>WBSNK</answered_person_id>
+            <acceptance_status>1.0</acceptance_status>
+            <like_count>500</like_count>
+        </answer>
+        <answer>
+            <answer_id>A100000016</answer_id>
+            <full_answer>array.remove(number);</full_answer>
+            <ques_id>Q100000007</ques_id>
+            <answered_person_id>WBSNK</answered_person_id>
+            <acceptance_status>1.0</acceptance_status>
+            <like_count>500</like_count>
+        </answer>
+        <answer>
+            <answer_id>A100000017</answer_id>
+            <full_answer>array.remove(number);</full_answer>
+            <ques_id>Q100000008</ques_id>
+            <answered_person_id>WBSNK</answered_person_id>
+            <acceptance_status>1.0</acceptance_status>
+            <like_count>500</like_count>
+        </answer>
+        <answer>
+            <answer_id>A100000018</answer_id>
+            <full_answer>array.remove(number);</full_answer>
+            <ques_id>Q100000009</ques_id>
             <answered_person_id>WBSNK</answered_person_id>
             <acceptance_status>1.0</acceptance_status>
             <like_count>500</like_count>
