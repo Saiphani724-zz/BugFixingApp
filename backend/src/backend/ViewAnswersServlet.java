@@ -76,13 +76,9 @@ public class ViewAnswersServlet extends HttpServlet {
 				json.put("accp", accp);
 				json.put("question", question);
 				json.put("creator_id", creator);
-				ar.add(json);
-				
+				ar.add(json);	
 			}
-
-			
-
-				
+	
 
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
