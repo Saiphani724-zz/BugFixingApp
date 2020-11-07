@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+D:\Projects\BugFixingApp\.metadata\.plugins\org.eclipse.jdt.core
+2772419465.index
+1965174767.index
+646436966.index

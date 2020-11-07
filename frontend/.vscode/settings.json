@@ -1,0 +1,7 @@
+{
+  "databricks.workspaceConfiguration": {
+    "workspaceGuid": "4b67cc48-84fd-2120-be0e-bd659644ab5c",
+    "lastActiveConnection": "VS Databricks connection"
+  },
+  "python.dataScience.codeRegularExpression": "^(# COMMAND ----------|#\\s*%%|#\\s*\\<codecell\\>|#\\s*In\\[\\d*?\\]|#\\s*In\\[ \\])"
+}
