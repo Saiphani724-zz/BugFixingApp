@@ -30,7 +30,7 @@ class Question extends Component {
 						<MDBCardImage
 							className={colors[this.props.flag]}
 							tag='div'>
-							<a href="/viewAnswer" onClick={this.handleButtonClick}><h5 className="question">{this.props.Full_Question}</h5></a>
+							<a href="/viewAnswer" onClick={this.handleButtonClick}><h5 className="question">{this.props.Question_Title}</h5></a>
 						</MDBCardImage>
 						<div className="body">
 							<span className="details">

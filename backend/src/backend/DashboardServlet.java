@@ -24,8 +24,7 @@ public class DashboardServlet extends HttpServlet {
 
 		JSONObject json = new JSONObject();
 
-		try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/mydb",
-				"sachmo", "sachmoadi1-")) {
+		try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bfapp","postgres", "1919")) {
 
 			System.out.println("Connected to PostgreSQL database! - DashboardPage");
 
@@ -41,7 +40,7 @@ public class DashboardServlet extends HttpServlet {
 					
 
 					String Ques_id = rs.getString("question_id");
-					String Full_Question = rs.getString("question");
+					String Question_Title = rs.getString("Question_Title");
 					String Creator_id = rs.getString("user_id");
 					String Viewcount = rs.getString("viewcount");
 					String Answer_count = rs.getString("answer_count");
@@ -49,7 +48,7 @@ public class DashboardServlet extends HttpServlet {
 					String Tags = rs.getString("tags");
 
 					json.put("Ques_id" , Ques_id);
-					json.put("Full_Question" , Full_Question);
+					json.put("Question_Title" , Question_Title);
 					json.put("Creator_id" , Creator_id);
 					json.put("Viewcount" , Viewcount);
 					json.put("Answer_count" , Answer_count);

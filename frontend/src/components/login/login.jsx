@@ -65,7 +65,7 @@ export class Login extends React.Component {
 			}).then(() => {
 
 				var result = JSON.parse(chunks[0]);
-
+				// console.log(chunks);
 				if (result['userstatus'] === "1") {
 					console.log(result);
 					cookie.save('username', username);

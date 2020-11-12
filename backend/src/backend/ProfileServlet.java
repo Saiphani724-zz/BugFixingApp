@@ -40,8 +40,7 @@ public class ProfileServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/mydb",
-				"sachmo", "sachmoadi1-")) {
+		try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bfapp","postgres", "1919")) {
 
 			System.out.println("Connected to PostgreSQL database! - DashboardPage");
 

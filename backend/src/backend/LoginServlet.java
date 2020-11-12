@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
-
+		
 		String username = "", password = "", user_id = "";
 //		username = req.getParameter("username");
 //		password = req.getParameter("password");
@@ -43,7 +43,8 @@ public class LoginServlet extends HttpServlet {
 					
 				System.out.println(username + " " + password);
 				
-				try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/mydb","sachmo", "sachmoadi1-")) {
+				try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bfapp","postgres", "1919"))
+				{
 
 					System.out.println("Connected to PostgreSQL database!");
 
@@ -99,7 +100,7 @@ public class LoginServlet extends HttpServlet {
 		res.setHeader("Access-Control-Allow-Origin", "*");
 		res.setHeader("Access-Control-Allow-Methods", "POST,GET");
 		PrintWriter out = res.getWriter();
-		// out.println(String.format("<h1>Details are %s %s</h1>", username ,
+//		 out.println(String.format("<h1>Details are %s %s</h1>", username ,
 		// password));
 		// out.println(String.format(" %s %s ", username , password));
 		out.print(jsontosend.toString());

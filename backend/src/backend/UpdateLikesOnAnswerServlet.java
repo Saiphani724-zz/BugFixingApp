@@ -42,8 +42,7 @@ public class UpdateLikesOnAnswerServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/mydb",
-				"sachmo", "sachmoadi1-")) {
+		try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bfapp","postgres", "1919")) {
 
 			System.out.println("Connected to PostgreSQL database! - UpdateLikesPage");
 			

@@ -37,6 +37,15 @@
 		<servlet-name>ViewAnswersServlet</servlet-name>
 		<url-pattern>/viewAnswer</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AskQuestionServlet</servlet-name>
+		<servlet-class>backend.AskQuestionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AskQuestionServlet</servlet-name>
+		<url-pattern>/askquestion</url-pattern>
+	</servlet-mapping>
 	
 	<servlet>
 		<servlet-name>ProfileServlet</servlet-name>

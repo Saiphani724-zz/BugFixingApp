@@ -84,7 +84,7 @@ class Dashboard extends React.Component {
 		else {
 			this.setState({
 				'filteredQuestions': this.state.questions.filter(ques => {
-					return ques.Full_Question.toLowerCase().includes(this.state.search.toLowerCase())
+					return ques.Question_Title.toLowerCase().includes(this.state.search.toLowerCase())
 				})
 			})
 		}
@@ -152,7 +152,7 @@ class Dashboard extends React.Component {
 									return <div>
 										{
 											(!(this.state.checkedB == true) || this.state.user_id == ques.Creator_id) ?
-												<Question Ques_id={ques.Ques_id} Full_Question={ques.Full_Question} Creator_id={ques.Creator_id} Viewcount={ques.Viewcount} Answer_count={ques.Answer_count} Votes={ques.Votes} Tags={ques.Tags.split(',')} flag={[flag++] % 4} />
+												<Question Ques_id={ques.Ques_id} Question_Title={ques.Question_Title} Creator_id={ques.Creator_id} Viewcount={ques.Viewcount} Answer_count={ques.Answer_count} Votes={ques.Votes} Tags={ques.Tags.split(',')} flag={[flag++] % 4} />
 												: null
 										}
 									</div>

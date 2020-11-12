@@ -41,17 +41,16 @@ public class ViewAnswersServlet extends HttpServlet {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/mydb",
-				"sachmo", "sachmoadi1-")) {
+		try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bfapp","postgres", "1919")) {
 
 			System.out.println("Connected to PostgreSQL database! - ViewAnswersPage");
 			
 			String question="anonymous",creator="anonymous";
 			Statement statement = connection.createStatement();
 			try {
-				ResultSet rs1 = statement.executeQuery(String.format("select question_id,question,user_id from questions where question_id LIKE '%s'",ques_id)); 
+				ResultSet rs1 = statement.executeQuery(String.format("select question_id,question_title,user_id from questions where question_id LIKE '%s'",ques_id)); 
 				if(rs1.next()) {
-					question = rs1.getString("question");
+					question = rs1.getString("question_title");
 					creator = rs1.getString("user_id");
 				}
 				

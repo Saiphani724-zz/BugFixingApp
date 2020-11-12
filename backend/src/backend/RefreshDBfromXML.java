@@ -13,10 +13,11 @@ import javax.xml.parsers.*;
 import java.io.*;
 
 public class RefreshDBfromXML  {
-	 public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
+	 public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, ClassNotFoundException {
 	        // TODO Auto-generated method stub
-
-	        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/mydb","sachmo", "sachmoadi1-")) {
+		 	
+		 	Class.forName("org.postgresql.Driver");
+	        try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bfapp","postgres", "1919")) {
 
 	            System.out.println("Java JDBC PostgreSQL Example");
 
@@ -44,7 +45,8 @@ public class RefreshDBfromXML  {
 
 	            String createQuestionsTable = "create table QUESTIONS (" +
 	                    "	question_id varchar(50) not null, " +
-	                    "	question varchar(255) not null, " +
+	                    "	question_title varchar(255) not null, " +
+	                    "	question_desc varchar(255) not null, " +
 	                    "	user_id varchar(50) not null, " +
 	                    "	viewcount numeric(10,0), " +
 	                    "	answer_count numeric(10,0), " +
@@ -70,8 +72,10 @@ public class RefreshDBfromXML  {
 	            statement.execute(createAnswersTable);
 
 
-	            File inputFile = new File("/home/sachmo/Documents/NCP_SEM7/PROJECT/BugFixingApp/backend/src/sampledb.xml");
+	            File inputFile = new File("D:\\Projects\\BugFixingApp\\backend\\src\\sampledb.xml");
+//	            File inputFile = new File("/home/sachmo/Documents/NCP_SEM7/PROJECT/BugFixingApp/backend/src/sampledb.xml");
 
+	            
 	            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 	            DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 	            Document doc = dBuilder.parse(inputFile);
@@ -104,12 +108,14 @@ public class RefreshDBfromXML  {
 	            nList = doc.getElementsByTagName("question");
 
 	            for (int temp = 0; temp < nList.getLength(); temp++) {
-	                Node nNode = nList.item(temp);
+	                
+	            	Node nNode = nList.item(temp);
 
 	                Element eElement = (Element) nNode;
 
 	                String Ques_id = eElement.getElementsByTagName("Ques_id").item(0).getTextContent();
-	                String Full_Question = eElement.getElementsByTagName("Full_Question").item(0).getTextContent();
+	                String Question_Title  = eElement.getElementsByTagName("Question_Title").item(0).getTextContent();
+	                String Question_Desc  = eElement.getElementsByTagName("Question_Desc").item(0).getTextContent();
 	                String Creator_id = eElement.getElementsByTagName("Creator_id").item(0).getTextContent();
 	                String Viewcount = eElement.getElementsByTagName("Viewcount").item(0).getTextContent();
 	                String Answer_count = eElement.getElementsByTagName("Answer_count").item(0).getTextContent();
@@ -117,7 +123,7 @@ public class RefreshDBfromXML  {
 	                String Tags = eElement.getElementsByTagName("Tags").item(0).getTextContent();
 
 
-	                String query = String.format("insert into QUESTIONS values ('%s', '%s', '%s', %s,%s ,%s, '%s') ;", Ques_id, Full_Question, Creator_id, Viewcount, Answer_count,Votes, Tags);
+	                String query = String.format("insert into QUESTIONS values ('%s', '%s', '%s' , '%s', %s,%s ,%s, '%s') ;", Ques_id, Question_Title, Question_Desc , Creator_id, Viewcount, Answer_count,Votes, Tags);
 //					System.out.println(query);
 	                statement.execute(query);
 	            }
@@ -145,8 +151,6 @@ public class RefreshDBfromXML  {
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }
-
-
 	    }
 
 }

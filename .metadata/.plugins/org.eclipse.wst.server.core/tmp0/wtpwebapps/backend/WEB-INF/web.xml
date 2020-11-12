@@ -28,4 +28,50 @@
 		<servlet-name>registerServlet</servlet-name>
 		<url-pattern>/register</url-pattern>
 	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ViewAnswersServlet</servlet-name>
+		<servlet-class>backend.ViewAnswersServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewAnswersServlet</servlet-name>
+		<url-pattern>/viewAnswer</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>AskQuestionServlet</servlet-name>
+		<servlet-class>backend.AskQuestionServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AskQuestionServlet</servlet-name>
+		<url-pattern>/askquestion</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>ProfileServlet</servlet-name>
+		<servlet-class>backend.ProfileServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ProfileServlet</servlet-name>
+		<url-pattern>/profile</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>UpdateLikesOnAnswerServlet</servlet-name>
+		<servlet-class>backend.UpdateLikesOnAnswerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>UpdateLikesOnAnswerServlet</servlet-name>
+		<url-pattern>/update_like</url-pattern>
+	</servlet-mapping>
+	
+	<filter>
+    <filter-name>CorsFilter</filter-name>
+    <filter-class>backend.CORSFilter</filter-class>
+</filter>
+ 
+<filter-mapping>
+    <filter-name>CorsFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+</filter-mapping>
 </web-app>
