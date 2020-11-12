@@ -45,7 +45,7 @@ public class RefreshDBfromXML  {
 	            String createQuestionsTable = "create table QUESTIONS (" +
 	                    "	question_id varchar(50) not null, " +
 	                    "	question_title varchar(255) not null, " +
-	                    "	question_desc varchar(255) not null, " +
+	                    "	question_desc varchar(255555) not null, " +
 	                    "	user_id varchar(50) not null, " +
 	                    "	viewcount numeric(10,0), " +
 	                    "	answer_count numeric(10,0), " +

@@ -25,8 +25,10 @@ public class ViewAnswersServlet extends HttpServlet {
 
 		JSONObject json = new JSONObject();
 		
+		
 		String ques_id = "";
 		JSONObject jsontosend = new JSONObject();
+		
 		HttpServletRequest request = req;
 		if("POST".equalsIgnoreCase(request.getMethod())) {
 			String myjsonString = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
@@ -45,13 +47,21 @@ public class ViewAnswersServlet extends HttpServlet {
 
 			System.out.println("Connected to PostgreSQL database! - ViewAnswersPage");
 			
-			String question="anonymous",creator="anonymous";
+			String question="anonymous",creator="anonymous", question_desc = "";
+			
 			Statement statement = connection.createStatement();
 			try {
-				ResultSet rs1 = statement.executeQuery(String.format("select question_id,question_title,user_id from questions where question_id LIKE '%s'",ques_id)); 
+				ResultSet rs1 = statement.executeQuery(String.format("select question_desc, question_id,question_title,user_id from questions where question_id LIKE '%s'",ques_id)); 
+				
 				if(rs1.next()) {
 					question = rs1.getString("question_title");
 					creator = rs1.getString("user_id");
+					question_desc = rs1.getString("question_desc");
+					
+					jsontosend.put("question", question);
+					jsontosend.put("creator_id", creator);
+					jsontosend.put("question_desc", question_desc);
+					
 				}
 				
 			}catch(Exception e) {
@@ -61,6 +71,7 @@ public class ViewAnswersServlet extends HttpServlet {
 			ResultSet rs = statement.executeQuery(String.format("select * from answers where question_id = '%s'", ques_id));
 			
 			while(rs.next()) {
+				
 				json = new JSONObject();
 				String ans_id = rs.getString("answer_id");
 				String full_ans = rs.getString("full_answer");
@@ -68,6 +79,7 @@ public class ViewAnswersServlet extends HttpServlet {
 				String user_id = rs.getString("user_id");
 				String accp = rs.getString("acceptance_status");
 				String like_count = rs.getString("like_count");
+				
 				json.put("answer_id",ans_id);
 				json.put("full_answer", full_ans);
 				json.put("question_id",question_id);
@@ -80,9 +92,8 @@ public class ViewAnswersServlet extends HttpServlet {
 				ar.add(json);
 				
 			}
-
 			
-
+			jsontosend.put("answers", ar);
 				
 
 			} catch (JSONException e) {
@@ -99,7 +110,7 @@ public class ViewAnswersServlet extends HttpServlet {
 			//res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
 			
 			PrintWriter out = res.getWriter();
-			out.print(ar.toString());
+			out.print(jsontosend.toString());
 
 		} catch(Exception e) {
 			e.printStackTrace();

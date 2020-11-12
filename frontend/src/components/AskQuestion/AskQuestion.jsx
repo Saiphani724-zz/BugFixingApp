@@ -66,14 +66,14 @@ export class AskQuestion extends Component {
 			var base_url = cookie.load('base_url');
 
 			var tobesent = {
-				'Ques_id' : String(Math.floor(Math.random() * 929392372328 + 89219283)),
-				'Question_Title' : this.state.title,
-				'Question_Desc' : this.state.value.toString('html'),
-				'Creator_id' : cookie.load('user_id'),
-				'Viewcount' : 0,
-				'Answer_count' : 0,
-				'Votes' : 0,
-				'Tags' : this.state.tags,
+				'Ques_id': String(Math.floor(Math.random() * 929392372328 + 89219283)),
+				'Question_Title': this.state.title,
+				'Question_Desc': this.state.value.toString('html'),
+				'Creator_id': cookie.load('user_id'),
+				'Viewcount': 0,
+				'Answer_count': 0,
+				'Votes': 0,
+				'Tags': this.state.tags,
 			}
 
 			const chunks = [];
@@ -93,15 +93,12 @@ export class AskQuestion extends Component {
 					var result = JSON.parse(chunks[0]);
 					console.log(result);
 
-					if(result['status'] === "200"){
+					if (result['status'] === "200") {
 						alert('Question Posted');
 						window.location.href = window.location.origin + '/dashboard';
 					}
-
-
 				});
 			})
-
 		} else {
 			alert("Fill all Details");
 		}
