@@ -106,7 +106,9 @@ class Answer extends Component {
                                         </div>
                                         <div className="card-body">
 
-                                            <p className="card-text" style={{color:"black"}}>{this.props.full_answer}</p>
+                                            <p className="card-text" style={{color:"black"}}>
+								  <div dangerouslySetInnerHTML={{ __html: this.props.full_answer }} />
+								  </p>
                                         </div>
                                         <div className="card-footer text-right">
                                             <MDBIcon icon="thumbs-up" className="m-3" onClick={this.handleLike}  />{this.state.like_count}

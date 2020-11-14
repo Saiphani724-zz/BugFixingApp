@@ -64,11 +64,31 @@
 		<servlet-name>UpdateLikesOnAnswerServlet</servlet-name>
 		<url-pattern>/update_like</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>OpenPostAnswerServlet</servlet-name>
+		<servlet-class>backend.OpenPostAnswerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>OpenPostAnswerServlet</servlet-name>
+		<url-pattern>/openpostanswer</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>PostAnswerServlet</servlet-name>
+		<servlet-class>backend.PostAnswerServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>PostAnswerServlet</servlet-name>
+		<url-pattern>/postanswer</url-pattern>
+	</servlet-mapping>
 	
 	<filter>
     <filter-name>CorsFilter</filter-name>
     <filter-class>backend.CORSFilter</filter-class>
 </filter>
+
+
  
 <filter-mapping>
     <filter-name>CorsFilter</filter-name>

@@ -16,20 +16,14 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class AskQuestionServlet extends HttpServlet {
+public class PostAnswerServlet extends HttpServlet {
 
 public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
 		
-		String Question_Title = "",
-				Question_Desc = "",
-				Creator_id = "70204", Tags = "", Ques_id = "";
+		String answer_id = "", full_answer = "", Ques_id = "", user_id = "";
+		int acceptance_status = 0, like_count = 0;
 			
-		int Viewcount = 0,
-				Answer_count = 0,
-				Votes = 0;
-
-
 		
 		JSONObject jsontosend = new JSONObject();
 
@@ -37,21 +31,19 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws IOEx
 		if ("POST".equalsIgnoreCase(request.getMethod())) {
 			String myjsonString = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
 			
-//			System.out.println(myjsonString);
 			try {
 				JSONObject json = new JSONObject(myjsonString);
 				
 
 				
-				Ques_id = json.get("question_id").toString();
 				
-				Question_Title = json.get("Question_Title").toString();
-				Question_Desc = json.getString("Question_Desc"); 
-				Creator_id = json.get("Creator_id").toString();
-				Viewcount = json.getInt("Viewcount");
-				Answer_count = json.getInt("Answer_count");
-				Votes = json.getInt("Votes");
-				Tags = json.get("Tags").toString();
+				
+				answer_id = json.getString("answer_id");
+				full_answer = json.getString("full_answer");
+				Ques_id = json.get("Ques_id").toString();
+				user_id = json.getString("user_id");
+				acceptance_status = json.getInt("acceptance_status");
+				like_count = json.getInt("like_count");
 					
 				
 				try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bfapp","postgres", "1919"))
@@ -62,9 +54,9 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws IOEx
 					Statement statement = connection.createStatement();
 
 		            					
-	                String query = String.format("insert into QUESTIONS values ('%s', '%s', '%s' , '%s', %s,%s ,%s, '%s') ;", Ques_id, Question_Title, Question_Desc , Creator_id, Viewcount, Answer_count,Votes, Tags);
-//					System.out.println(query);
-	                statement.execute(query);		  
+	                
+			    String query = String.format("insert into answers values ('%s', '%s', '%s', '%s',%s, %s) ;", answer_id, full_answer, Ques_id, user_id, acceptance_status,like_count);
+	                statement.execute(query);
 
 	                jsontosend.put("status", "200");
 //		            
@@ -102,3 +94,4 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws IOEx
 	}
 
 }
+

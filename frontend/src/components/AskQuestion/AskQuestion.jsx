@@ -4,6 +4,7 @@ import cookie from 'react-cookies';
 import { Form, Button } from 'react-bootstrap';
 import bulb from "./bestuu.png"
 import RichTextEditor from 'react-rte';
+import { MDBCarousel, MDBBox, MDBIcon } from 'mdbreact';
 
 export class AskQuestion extends Component {
 
@@ -128,6 +129,9 @@ export class AskQuestion extends Component {
 		};
 		return (
 			<div class="imgQues">
+
+
+
 				<img src={bulb} alt="bulb"></img>
 
 				<div class="askQues">

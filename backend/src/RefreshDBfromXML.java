@@ -9,10 +9,16 @@ import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.*;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
+
 import java.io.*;
 
 public class RefreshDBfromXML  {
-	 public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, ClassNotFoundException {
+	 public static void main(String[] args) throws ParserConfigurationException, IOException, ClassNotFoundException, SAXException {
 	        // TODO Auto-generated method stub
 		 	
 		 	Class.forName("org.postgresql.Driver");
@@ -114,6 +120,46 @@ public class RefreshDBfromXML  {
 	                String Ques_id = eElement.getElementsByTagName("Ques_id").item(0).getTextContent();
 	                String Question_Title  = eElement.getElementsByTagName("Question_Title").item(0).getTextContent();
 	                String Question_Desc  = eElement.getElementsByTagName("Question_Desc").item(0).getTextContent();
+
+	                
+//	                XMLSerializer s = new XMLSerializer();
+//	                var d = eElement;
+//	                String str = s.serializeToString(d);
+	                
+	                TransformerFactory tf = TransformerFactory.newInstance();
+	                Transformer transformer;
+	                try {
+	                    transformer = tf.newTransformer();
+	                    // below code to remove XML declaration
+	                    // transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, "yes");
+	                    StringWriter writer = new StringWriter();
+	                    
+	                    Node node = eElement.getElementsByTagName("Question_Desc").item(0);
+	                    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+	                    factory.setNamespaceAware(true);
+	                    DocumentBuilder builder = factory.newDocumentBuilder();
+	                    Document newDocument = builder.newDocument();
+	                    Node importedNode = newDocument.importNode(node, true);
+	                    newDocument.appendChild(importedNode);
+
+	                    
+	                    
+	                    transformer.transform(new DOMSource(newDocument), new StreamResult(writer));
+	                    String output = writer.getBuffer().toString();
+//	                    System.out.println(output);
+	                    
+	                    Question_Desc = output.substring(
+	                    				"<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?><Question_Desc>".length(), 
+	                    				output.length() -  "</Question_Desc>".length()
+	                    				).toString() ;
+	                } catch (TransformerException e) {
+	                    e.printStackTrace();
+	                }
+
+
+//
+	                
+//	                System.out.println(Question_Desc);
 	                String Creator_id = eElement.getElementsByTagName("Creator_id").item(0).getTextContent();
 	                String Viewcount = eElement.getElementsByTagName("Viewcount").item(0).getTextContent();
 	                String Answer_count = eElement.getElementsByTagName("Answer_count").item(0).getTextContent();

@@ -2,16 +2,63 @@ import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import bulb from "./miracle.png"
 import RichTextEditor from 'react-rte';
+import cookie from 'react-cookies';
+
+import { MDBCarousel, MDBBox, MDBIcon } from 'mdbreact';
 
 export class AskQuestion extends Component {
 
 	state = {
 		value: RichTextEditor.createValueFromString("<p><br></br><br></br><br></br></p>", 'html'),
-		'title': "",
-		'tags': "",
-		'wrongTitleFormat': 0,
-		'wrongTagsFormat': 0,
-		'wrongQuestionFormat': 0,
+
+		'wrongAnswerFormat': 0,
+	}
+
+	componentDidMount() {
+		var username = cookie.load('username');
+		if (username === undefined) {
+			window.location.href = '/signin';
+		} else {
+			this.setState({ 'username': username });
+			var user_id = cookie.load('user_id');
+			this.setState({ 'user_id': user_id });
+		}
+
+		let self = this;
+
+		const chunks = [];
+		var result = " not updated";
+		var base_url = cookie.load('base_url');
+
+		fetch(`${base_url}/openpostanswer`, {
+			method: 'POST',
+			headers: {
+
+			},
+			body: JSON.stringify({ "Ques_id": cookie.load('Ques_id') })
+		}).then(function (response) {
+
+
+			const reader = response.body.getReader();
+
+			reader.read().then(({ value, done }) => {
+				var string = new TextDecoder("utf-8").decode(value);
+				chunks.push(string);
+			}).then(() => {
+				result = JSON.parse(chunks);
+				console.log(chunks);
+			}).then(() => {
+
+				self.setState({ question: result['question'] });
+				self.setState({ creator: result['creator_id'] });
+				self.setState({ question_desc: result['question_desc'] });
+
+				// console.log(self.state);
+
+			}
+			);
+		})
+
 	}
 
 
@@ -27,10 +74,6 @@ export class AskQuestion extends Component {
 		}
 	};
 
-	onTitleChange = (e) => {
-		this.setState({ 'title': e.target.value })
-	}
-
 	postQuestion = (e) => {
 		var flag = 1;
 
@@ -42,25 +85,54 @@ export class AskQuestion extends Component {
 			}
 		)
 
-		if (this.state.title === "") {
-			this.setState({ 'wrongTitleFormat': 1 })
-			flag = 0;
-		}
-		if (this.state.tags === "") {
-			this.setState({ 'wrongTagsFormat': 1 })
-			flag = 0;
-		}
-		if (this.state.value === "") {
-			this.setState({ 'wrongQuestionFormat': 1 })
+		if (this.state.value.toString('html') == "") {
+			this.setState({ 'wrongAnswerFormat': 1 })
 			flag = 0;
 		}
 
 		if (flag) {
-			alert("Posted Question");
+			console.log(this.state.value.toString('html'));
+
+			var base_url = cookie.load('base_url');
+
+			var tobesent = {
+				'answer_id': String(Math.floor(Math.random() * 929392372328 + 89219283)),
+				'full_answer': this.state.value.toString('html'),
+				'Ques_id' : cookie.load('Ques_id'),
+				'user_id': cookie.load('user_id'),
+				'acceptance_status' : 0,
+				'like_count': 0,
+			}
+
+			const chunks = [];
+			fetch(`${base_url}/postanswer`, {
+				method: 'POST',
+				headers: {
+
+				},
+				body: JSON.stringify(tobesent)
+			}).then(function (response) {
+				const reader = response.body.getReader();
+
+				reader.read().then(({ value, done }) => {
+					var string = new TextDecoder("utf-8").decode(value);
+					chunks.push(string);
+				}).then(() => {
+					var result = JSON.parse(chunks[0]);
+					console.log(result);
+
+					if (result['status'] === "200") {
+						alert('Answer Posted');
+						window.location.href = window.location.origin + '/dashboard';
+					}
+				});
+			})
+
+
+
 		} else {
 			alert("Fill all Details");
 		}
-		console.log(this.state);
 	}
 
 
@@ -85,32 +157,58 @@ export class AskQuestion extends Component {
 			]
 		};
 		return (
-			<div class="imgQues">
-				<img src={bulb} alt="bulb"></img>
+			<div>
+				<MDBCarousel>
+					<MDBBox>
+						<div className="container-fluid" style={{ height: "100%" }}>
 
-				<div class="askQues">
-					<Form>
-						<Form.Group controlId="exampleForm.ControlInput1">
-							<Form.Label><b>Title</b></Form.Label>
-							<Form.Control type="text" placeholder="Enter the title here" onChange={this.onTitleChange} />
-						</Form.Group>
+							<div id="left">
+								{
+									this.state.question === null ?
+										<h1>Error Fetching question</h1> :
+										<div className="card" style={{ width: "90%" }}>
+											<div className="card-header">
+												{this.state.question}
+											</div>
+											<div className="card-body">
+												<div dangerouslySetInnerHTML={{ __html: this.state.question_desc }} />
+											</div>
+										</div>
 
-						<Form.Group controlId="exampleForm.ControlTextarea1">
-							<Form.Label><b>Question area</b></Form.Label>
-							<RichTextEditor
-								toolbarConfig={toolbarConfig}
-								value={this.state.value}
-								onChange={this.onQuestionChange}
-								className='custom-css-class'
-							/>
-						</Form.Group>
+								}
 
-						<br></br>
-						<Button variant="primary" onClick={this.postQuestion}>
-							Post your Answer
+							</div>
+
+						</div>
+					</MDBBox>
+				</MDBCarousel>
+
+
+				<div class="imgQues">
+					<img src={bulb} alt="bulb"></img>
+
+
+					<div class="askQues">
+						<Form>
+
+
+							<Form.Group controlId="exampleForm.ControlTextarea1">
+								<Form.Label><b>Answer area</b></Form.Label>
+								<RichTextEditor
+									toolbarConfig={toolbarConfig}
+									value={this.state.value}
+									onChange={this.onQuestionChange}
+									className='custom-css-class'
+								/>
+							</Form.Group>
+
+							<br></br>
+							<Button variant="primary" onClick={this.postQuestion}>
+								Post your Answer
                         </Button>
 
-					</Form>
+						</Form>
+					</div>
 				</div>
 			</div>
 

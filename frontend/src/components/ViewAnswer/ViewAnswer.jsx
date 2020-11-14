@@ -8,6 +8,7 @@ import { Button } from 'react-bootstrap';
 import { MDBCarousel, MDBBox, MDBIcon } from 'mdbreact';
 import Answer from './Answers/answer.jsx';
 class ViewAnswer extends React.Component {
+	
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -15,8 +16,6 @@ class ViewAnswer extends React.Component {
 			comment: '',
 			answers: [],
 			ques_id: "anonymous"
-
-
 		}
 	}
 	componentDidMount() {
@@ -102,8 +101,7 @@ class ViewAnswer extends React.Component {
 												<MDBIcon icon="comment" className="m-3" onClick={this.handleshareclick} />
 												<MDBIcon icon="bars" className="m-3" />
 												<Button variant="primary" onClick={this.postQuestion}
-													href="/postanswer/"
-												>
+													href="/postanswer/">
 													Post new Answer
                         								</Button>
 											</div>
