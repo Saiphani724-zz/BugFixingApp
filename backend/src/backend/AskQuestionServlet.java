@@ -17,6 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class AskQuestionServlet extends HttpServlet {
+	//Connection connection;
 
 public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
@@ -32,7 +33,7 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws IOEx
 
 		
 		JSONObject jsontosend = new JSONObject();
-
+		
 		HttpServletRequest request = req;
 		if ("POST".equalsIgnoreCase(request.getMethod())) {
 			String myjsonString = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
@@ -43,7 +44,7 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws IOEx
 				
 
 				
-				Ques_id = json.get("question_id").toString();
+				Ques_id = json.get("Ques_id").toString();
 				
 				Question_Title = json.get("Question_Title").toString();
 				Question_Desc = json.getString("Question_Desc"); 
@@ -73,6 +74,9 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws IOEx
 					e.printStackTrace();
 					
 					jsontosend.put("status", "500");
+				}
+				finally {
+					
 				}
 				
 				

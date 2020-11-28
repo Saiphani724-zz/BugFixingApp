@@ -77,8 +77,8 @@ public class RefreshDBfromXML  {
 	            statement.execute(createAnswersTable);
 
 
-	            File inputFile = new File("D:\\Projects\\BugFixingApp\\backend\\src\\sampledb.xml");
-//	            File inputFile = new File("/home/sachmo/Documents/NCP_SEM7/PROJECT/BugFixingApp/backend/src/sampledb.xml");
+	            //File inputFile = new File("D:\\Projects\\BugFixingApp\\backend\\src\\sampledb.xml");
+	            File inputFile = new File("/home/sachmo/Documents/NCP_SEM7/PROJECT/BugFixingApp/backend/src/sampledb.xml");
 
 	            
 	            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

@@ -13,7 +13,7 @@ import {
 	MDBIcon
 } from 'mdbreact';
 
-class Answer extends Component {
+class ViewerAnswer extends Component {
 	constructor(props){
 		super(props);
 		this.state  = {
@@ -26,6 +26,7 @@ class Answer extends Component {
 		}
 	}
 	componentDidMount() {
+		console.log("This is viewer answer, damnit "+this.props.accp);
 		let self = this;
 		self.setState({answer_id:self.props.ans_id});
 		self.setState({accp:self.props.accp});
@@ -100,6 +101,8 @@ class Answer extends Component {
 		var colors = ['purple-gradient', 'aqua-gradient', 'peach-gradient', 'blue-gradient'];
 
 		return (
+			<div>
+			{ this.props.accp === "1"?
 			<div className="card" style={{width: "90%"}}>
                                         <div className="card-header">
                                             {this.props.userid}
@@ -114,9 +117,11 @@ class Answer extends Component {
                                             <MDBIcon icon="thumbs-up" className="m-3" onClick={this.handleLike}  />{this.state.like_count}
                                             <div className="d-inline" style={{backgroundColor:"green",color:"white"}}>Accepted</div>
                                         </div>
-                                    </div>
+                                    </div>: <p></p>
+		}
+		</div>
 		)
 	}
 }
 
-export default Answer;
+export default ViewerAnswer;
