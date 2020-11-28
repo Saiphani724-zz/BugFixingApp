@@ -160,57 +160,7 @@ class ViewAnswer extends React.Component {
 								</div>
 							</div>
 							<div id="right" className="d-inline">
-								<table className="table">
-									<thead className="thead-dark">
-										<tr>
-
-											<th>First Name</th>
-
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-
-											<td>Mark</td>
-
-										</tr>
-										<tr>
-
-											<td>Jacob</td>
-
-										</tr>
-										<tr>
-
-											<td>Mark</td>
-
-										</tr>
-										<tr>
-
-											<td>Jacob</td>
-
-										</tr>
-										<tr>
-
-											<td>Mark</td>
-
-										</tr>
-										<tr>
-
-											<td>Jacob</td>
-
-										</tr>
-										<tr>
-
-											<td>Mark</td>
-
-										</tr>
-										<tr>
-
-											<td>Jacob</td>
-
-										</tr>
-									</tbody>
-								</table>
+								
 							</div>
 						</div>
 					</MDBBox>
