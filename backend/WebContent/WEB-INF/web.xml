@@ -82,6 +82,14 @@
 		<servlet-name>PostAnswerServlet</servlet-name>
 		<url-pattern>/postanswer</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>updateAccp</servlet-name>
+		<servlet-class>backend.updateAccp</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>updateAccp</servlet-name>
+		<url-pattern>/update_accp</url-pattern>
+	</servlet-mapping>
 	
 	<filter>
     <filter-name>CorsFilter</filter-name>

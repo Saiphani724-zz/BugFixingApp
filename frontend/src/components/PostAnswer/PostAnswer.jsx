@@ -194,7 +194,7 @@ export class AskQuestion extends Component {
 
 							<Form.Group controlId="exampleForm.ControlTextarea1">
 								<Form.Label><b>Answer area</b></Form.Label>
-								<RichTextEditor
+								<RichTextEditor 
 									toolbarConfig={toolbarConfig}
 									value={this.state.value}
 									onChange={this.onQuestionChange}
