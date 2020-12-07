@@ -40,9 +40,8 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws IOEx
 			try {
 				JSONObject json = new JSONObject(myjsonString);
 				
-
-				
 				Ques_id = json.get("Ques_id").toString();
+				
 				
 				Question_Title = json.get("Question_Title").toString();
 				Question_Desc = json.getString("Question_Desc"); 

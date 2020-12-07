@@ -166,7 +166,7 @@ export class AskQuestion extends Component {
 								{
 									this.state.question === null ?
 										<h1>Error Fetching question</h1> :
-										<div className="card" style={{ marginLeft:"86px" , width: "90%" }}>
+										<div className="card" style={{ marginLeft:"0px" , width: "90%" }}>
 											<div className="card-header">
 												{this.state.question}
 											</div>
