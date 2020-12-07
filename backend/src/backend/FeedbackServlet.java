@@ -23,7 +23,7 @@ public class FeedbackServlet extends HttpServlet {
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
 		
-		String rating = "", comment = "";
+		String rating = "", comment = "", user_id = "";
 //		username = req.getParameter("username");
 //		password = req.getParameter("password");
 //		System.out.println(username + " " + password);
@@ -39,6 +39,7 @@ public class FeedbackServlet extends HttpServlet {
 				JSONObject json = new JSONObject(myjsonString);
 				System.out.println(json);
 				rating = json.get("rating").toString();
+				user_id = json.get("user_id").toString();
 				comment = json.get("comment").toString();
 				
 				
@@ -52,7 +53,27 @@ public class FeedbackServlet extends HttpServlet {
 
 					Statement statement = connection.createStatement();
 					
-					statement.execute(String.format("insert into feedback values ( %s , '%s' );", rating, comment));
+
+					ResultSet rs = statement.executeQuery(String.format("select * from feedback where user_id = '%s' ", user_id));	
+					if(rs.next()){
+						
+						String query = String.format(
+								"UPDATE feedback " 
+								+ "SET rating = %s, comment= '%s'"
+								+ " WHERE user_id = '%s' ",  rating, comment, user_id );
+						
+						System.out.println(query);
+						
+						statement.execute(query);
+
+//								"insert into feedback values ( '%s' , %s , '%s' );", user_id, rating, comment));
+					}
+					else
+					{
+						statement.execute(String.format("insert into feedback values ( '%s' , %s , '%s' );", user_id, rating, comment));
+					}
+					
+					
 
 		            {
 		            	jsontosend.put("status", "200");

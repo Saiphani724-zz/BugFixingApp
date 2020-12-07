@@ -21,7 +21,7 @@ public class FeedbackOpenServlet extends HttpServlet {
 	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
 
 		
-		String rating = "", comment = "";
+		String rating = "", comment = "", user_id = "";
 		
 		JSONObject jsontosend = new JSONObject();
 		ArrayList<JSONObject> ar = new ArrayList();
@@ -35,8 +35,10 @@ public class FeedbackOpenServlet extends HttpServlet {
 				JSONObject json = new JSONObject(myjsonString);
 				System.out.println(json);
 				
+				user_id = json.get("user_id").toString();
 					
 				System.out.println(rating + " " + comment);
+				
 				
 				try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bfapp","postgres", "1919"))
 				{
@@ -64,6 +66,18 @@ public class FeedbackOpenServlet extends HttpServlet {
 
 						ar.add(json);
 					}
+						
+					rs = statement.executeQuery(String.format("select * from feedback where user_id = '%s' ", user_id));	
+					if(rs.next()){
+						jsontosend.put("rating" , rs.getString("rating"));
+						jsontosend.put("comment" , rs.getString("comment"));
+						System.out.println(rs.getString("rating") + " phanii" + rs.getString("comment"));
+					}
+					else
+					{
+						System.out.println("malli em ayyindhi ra");
+					}
+					
 					
 		            {
 		            	jsontosend.put("feedback", ar.toString());

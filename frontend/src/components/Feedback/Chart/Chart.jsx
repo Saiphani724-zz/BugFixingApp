@@ -28,7 +28,7 @@ class ChartsPage extends React.Component {
 
     render() {
 
-	console.log(this.props.totratings + "from here");
+	// console.log(this.props.totratings + "from here");
 
         return (
 

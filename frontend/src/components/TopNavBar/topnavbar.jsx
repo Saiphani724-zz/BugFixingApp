@@ -7,6 +7,7 @@ import cookies from 'react-cookies';
 function logOut() {
     console.log(cookies.load('username'));
     cookies.remove('username');
+    cookies.remove('user_id');
 }
 
 
@@ -54,3 +55,4 @@ function TopNavBar() {
 }
 
 export default TopNavBar;
+

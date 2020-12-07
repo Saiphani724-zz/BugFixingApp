@@ -18,8 +18,17 @@ class Feedback extends React.Component {
 
 		var base_url = cookie.load('base_url');
 
-		var tobesent = {
+		var user_id = cookie.load('user_id');
+		if (user_id === undefined) {
+			window.location.href = '/signin';
+		} else {
+			var user_id = cookie.load('user_id');
+			this.setState({ 'user_id': user_id });
+		}
 
+
+		var tobesent = {
+			"user_id": cookie.load('user_id')
 		}
 
 		let self = this;
@@ -49,9 +58,11 @@ class Feedback extends React.Component {
 					console.log(feedback[i]['rating']);
 				}
 
-				console.log(ratings);
+				console.log(result);
 
 				self.setState({ "totratings": ratings });
+				self.setState({ "rating": parseInt(result["rating"]) });
+				self.setState({ "comment": result["comment"] });
 
 
 				// window.location.href = '/dashboard';
@@ -61,9 +72,10 @@ class Feedback extends React.Component {
 	}
 
 	state = {
-		"rating": null,
-		"comment": "Default comment",
-		"totratings": null
+		"rating": 0,
+		"comment": null,
+		"totratings": null,
+		"user_id": null
 	}
 
 	handleCommentChange = (e) => {
@@ -85,7 +97,8 @@ class Feedback extends React.Component {
 
 		var tobesent = {
 			"rating": this.state.rating,
-			"comment": this.state.comment
+			"comment": this.state.comment,
+			"user_id": cookie.load('user_id')
 		}
 
 		const chunks = [];
@@ -107,7 +120,10 @@ class Feedback extends React.Component {
 				// console.log(JSON.parse(result['feedback']));
 				console.log(result);
 
-				window.location.href = '/feedback';
+				if(result["status"] == 200) {
+					window.location.href = '/feedback';
+				}
+				
 			});
 		})
 
@@ -126,56 +142,80 @@ class Feedback extends React.Component {
 		return (
 			<div class="feedbackpage">
 
+				{this.state.user_id !== null ? <div>
 
-				<h1>Your Feedback is very Valuable</h1>
-				<div class="feedbackform">
-					<Form>
-						<Form.Group controlId="rating" className="rating">
-							<Form.Label class="formlabel">Rating</Form.Label>
-							<MDBContainer>
-								<ReactStars
-									count={5}
-									onChange={this.handleRatingChange}
-									size={50}
-									activeColor="#ffd700"
-								/>
+					<h1>Your Feedback is very Valuable</h1>
+					<div class="feedbackform">
 
-								{/* <MDBRating
-									iconFaces
-									fillClassName='black-text'
-									iconRegular
-									// onChange={this.handleRatingChange}
-									// onClick={this.handleRatingChange}
-									// getValue={this.handleRatingChange}
-									// value={this.state.rating}
-									iconSize="2x"
-								/> */}
-							</MDBContainer>
-						</Form.Group>
+						<Form>
+							<Form.Group controlId="rating" className="rating">
+
+								{this.state.rating == 0 ? null :
+									<div>
+										<Form.Label class="formlabel">Rating</Form.Label>
 
 
+										<MDBContainer>
+											<ReactStars
+												count={5}
+												value={this.state.rating}
+												onChange={this.handleRatingChange}
+												size={50}
+												activeColor="#ffd700"
+											/>
 
-						<Form.Group controlId="comments">
-							<Form.Label class="formlabel">Comments</Form.Label>
-							<Form.Control as="textarea" placeholder="Enter your comments" rows="5"
-								onChange={this.handleCommentChange} />
-						</Form.Group>
+											{/* <MDBRating
+	iconFaces
+	fillClassName='black-text'
+	iconRegular
+	// onChange={this.handleRatingChange}
+	// onClick={this.handleRatingChange}
+	// getValue={this.handleRatingChange}
+	// value={this.state.rating}
+	iconSize="2x"
+/> */}
+										</MDBContainer>
+									</div>
+								}
 
-						<Button variant="primary" onClick={this.handleSubmit}>
-							Submit
+
+							</Form.Group>
+
+							{this.state.comment == null ?
+
+								<Form.Group controlId="comments">
+									<Form.Label class="formlabel">Comments</Form.Label>
+									<Form.Control as="textarea" placeholder="Enter your comments" rows="5"
+										onChange={this.handleCommentChange} />
+								</Form.Group> :
+
+								<Form.Group controlId="comments">
+									<Form.Label class="formlabel">Comments</Form.Label>
+									<Form.Control as="textarea" placeholder="Enter your comments" rows="5" defaultValue={this.state.comment}
+										onChange={this.handleCommentChange} />
+								</Form.Group>
+
+							}
+
+							<Button variant="primary" onClick={this.handleSubmit}>
+								Submit
                         </Button>
-					</Form>
-				</div>
+						</Form>
+					</div>
 
-				{
-					this.state.totratings == null ? null : <div className="mychart">
-						<Chart totratings={this.state.totratings} />
+					{
+						this.state.totratings == null ? null : <div className="mychart">
+							<Chart totratings={this.state.totratings} />
+						</div>
+					}
+
+				</div> : <div>
+						<h1>Please Login!!</h1>
 					</div>
 				}
 
-
-
 			</div>
+
 		);
 	}
 }

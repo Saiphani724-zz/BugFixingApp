@@ -50,8 +50,10 @@ public class RefreshDBfromXML  {
 	            
 	            String createFeedbackTable = "create table feedback"
 	                    + "("
+	                    + "user_id varchar(50) not null unique, "
 	                    + "rating numeric,"
-	                    + "comment varchar(500)"
+	                    + "comment varchar(500),"
+	                    + "primary key(user_id)"
 	                    + ")";
 	            statement.execute(createFeedbackTable );
 
@@ -114,14 +116,14 @@ public class RefreshDBfromXML  {
 
 	            }
 
-	             statement.execute("insert into feedback values (4, 'good!!') ");
-	             statement.execute("insert into feedback values (5, 'very good!!') ");
-	             statement.execute("insert into feedback values (2, 'okayish!!') ");
-	             statement.execute("insert into feedback values (1, 'okayish!!') ");
-	             statement.execute("insert into feedback values (2, 'okayish!!') ");
-	             statement.execute("insert into feedback values (3, 'okayish!!') ");
-	             statement.execute("insert into feedback values (3, 'okayish!!') ");
-	             statement.execute("insert into feedback values (3, 'okayish!!') ");
+	             statement.execute("insert into feedback values ('52U82' , 4, 'good!!') ");
+	             statement.execute("insert into feedback values ('RI0GP' , 5, 'very good!!') ");
+	             statement.execute("insert into feedback values ('91ZV7' , 2, 'okayish!!') ");
+	             statement.execute("insert into feedback values ('IRT3I' , 1, 'okayish!!') ");
+	             statement.execute("insert into feedback values ('O1FSO' , 2, 'okayish!!') ");
+	             statement.execute("insert into feedback values ('C1W1M' , 3, 'okayish!!') ");
+	             statement.execute("insert into feedback values ('5MXRG' , 3, 'okayish!!') ");
+	             statement.execute("insert into feedback values ('GN2B2' , 3, 'okayish!!') ");
 	             
 	            // String query = String.format("insert into users values ('%s', '%s', '%s', %s,%s,%s,%s) ;", college,state,city,tution,hostel,mess,total);
 
