@@ -6,76 +6,76 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.Statement;   
 import java.util.stream.Collectors;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.json.JSONException;
 import org.json.JSONObject;
+ 
+public class FeedbackServlet extends HttpServlet {
 
-public class AskQuestionServlet extends HttpServlet {
-	//Connection connection;
+	// public static boolean equals(Object a, Object b) {
+	// return (a == b) || (a != null && a.equals(b));
+	// }
 
-public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
+	public void service(HttpServletRequest req, HttpServletResponse res) throws IOException {
+
 		
-		String Question_Title = "",
-				Question_Desc = "",
-				Creator_id = "70204", Tags = "", Ques_id = "";
-			
-		int Viewcount = 0,
-				Answer_count = 0,
-				Votes = 0;
-
+		String rating = "", comment = "";
+//		username = req.getParameter("username");
+//		password = req.getParameter("password");
+//		System.out.println(username + " " + password);
 		
 		JSONObject jsontosend = new JSONObject();
-		
+
 		HttpServletRequest request = req;
 		if ("POST".equalsIgnoreCase(request.getMethod())) {
 			String myjsonString = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
 			
-//			System.out.println(myjsonString);
+			System.out.println(myjsonString);
 			try {
 				JSONObject json = new JSONObject(myjsonString);
+				System.out.println(json);
+				rating = json.get("rating").toString();
+				comment = json.get("comment").toString();
 				
-
 				
-				Ques_id = json.get("Ques_id").toString();
-				
-				Question_Title = json.get("Question_Title").toString();
-				Question_Desc = json.getString("Question_Desc"); 
-				Creator_id = json.get("Creator_id").toString();
-				Viewcount = json.getInt("Viewcount");
-				Answer_count = json.getInt("Answer_count");
-				Votes = json.getInt("Votes");
-				Tags = json.get("Tags").toString();
 					
+				System.out.println(rating + " " + comment);
 				
 				try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/bfapp","postgres", "1919"))
 				{
 
-					System.out.println("Connected to PostgreSQL database!- askquestion");
+					System.out.println("Connected to PostgreSQL database!");
 
 					Statement statement = connection.createStatement();
+					
+					statement.execute(String.format("insert into feedback values ( %s , '%s' );", rating, comment));
 
-		            					
-	                String query = String.format("insert into QUESTIONS values ('%s', '%s', '%s' , '%s', %s,%s ,%s, '%s') ;", Ques_id, Question_Title, Question_Desc , Creator_id, Viewcount, Answer_count,Votes, Tags);
-//					System.out.println(query);
-	                statement.execute(query);		  
-
-	                jsontosend.put("status", "200");
-//		            
+		            {
+		            	jsontosend.put("status", "200");
+		            }
+		            
+//		            try {
+//		    			String a = username;
+//		    			String b = "psp";
+//
+//		    			if ((a == b) || (a != null && a.equals(b))) {
+//		    				jsontosend.put("userstatus", "1");
+//		    			} else {
+//		    				jsontosend.put("userstatus", "0");
+//		    			}
+//		    		} catch (JSONException e) {
+//		    			e.printStackTrace();
+//		    		}
 
 				} catch (SQLException e) {
-					e.printStackTrace();
-					
 					jsontosend.put("status", "500");
+					e.printStackTrace();
 				}
-				finally {
-					
-				}
+				
 				
 				
 				
@@ -96,11 +96,10 @@ public void service(HttpServletRequest req, HttpServletResponse res) throws IOEx
 		PrintWriter out = res.getWriter();
 //		 out.println(String.format("<h1>Details are %s %s</h1>", username ,
 		// password));
-		 System.out.println(jsontosend.toString());
+		// out.println(String.format(" %s %s ", username , password));
 		out.print(jsontosend.toString());
 		// out.print(json.toString());
-		 out.flush();
-		 out.close();
+		// out.flush();
+		// out.close();
 	}
-
 }

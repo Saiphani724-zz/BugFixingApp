@@ -5,12 +5,14 @@ import {Doughnut} from "react-chartjs-2";
 
 
 class ChartsPage extends React.Component {
+
+
     state = {
         dataDoughnut: {
             labels: ["5 Star", "4 Star", "3 Star", "2 Star", "1 Star"],
             datasets: [
                 {
-                    data: [300, 50, 100, 40, 120],
+                    data: [this.props.totratings[4], this.props.totratings[3], this.props.totratings[2], this.props.totratings[1], this.props.totratings[0]],	
                     backgroundColor: ["#F7464A", "#46BFBD", "#FDB45C", "#949FB1", "#4D5360"],
                     hoverBackgroundColor: [
                         "#FF5A5E",
@@ -25,6 +27,8 @@ class ChartsPage extends React.Component {
     }
 
     render() {
+
+	console.log(this.props.totratings + "from here");
 
         return (
 

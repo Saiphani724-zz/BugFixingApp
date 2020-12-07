@@ -10,26 +10,26 @@ import ViewerAnswer from './Answers/answer.jsx';
 import MentorAnswer from './Answers/mentorAnswer.jsx';
 import RenderAnswer from './Answers/renderAnswer.jsx'
 class ViewAnswer extends React.Component {
-	
+
 	constructor(props) {
 		super(props);
 		this.state = {
 			likes: 0,
 			comment: '',
 			answers: [],
-            ques_id: "anonymous",
-            role: false
+			ques_id: "anonymous",
+			role: false
 		}
 	}
 	componentWillMount() {
 		var men_role = cookie.load('mentor_role');
 		let self = this;
-		self.setState({role: men_role});
+		self.setState({ role: men_role });
 	}
 	componentDidMount() {
-        var ques_id = cookie.load('Ques_id');
-        var men_role = cookie.load('mentor_role');
-        
+		var ques_id = cookie.load('Ques_id');
+		var men_role = cookie.load('mentor_role');
+
 		if (ques_id === undefined) {
 			window.location.href = '/dashboard';
 		} else {
@@ -40,9 +40,9 @@ class ViewAnswer extends React.Component {
 			self.setState({ ques_id: ques_id })
 			const chunks = [];
 			var result = " not updated";
-            var base_url = cookie.load('base_url');
-            
-			
+			var base_url = cookie.load('base_url');
+
+
 			fetch(`${base_url}/viewAnswer`, {
 				method: 'POST',
 				headers: {
@@ -76,7 +76,7 @@ class ViewAnswer extends React.Component {
 				);
 			})
 			//self.setState({ role:men_role });
-			console.log(self.state.role+" "+men_role);
+			console.log(self.state.role + " " + men_role);
 		}
 	}
 	handlelikeclick = (e) => {
@@ -90,34 +90,34 @@ class ViewAnswer extends React.Component {
 
 	render() {
 		var role = cookie.load('mentor_role');
-		console.log("inside render "+role);
+		console.log("inside render " + role);
 		let answer_block;
 		let super_block = [];
-		
-		if(this.state.answers.length === 0){
+
+		if (this.state.answers.length === 0) {
 			super_block.push(React.createElement(<h1>No answers Yet!</h1>));
-		}else{
+		} else {
 			var x;
-			if(role){
-			// for(x = 0; x<this.state.answers.length;x++){
-			// 	var ans = this.state.answers[x];
-			// 	super_block.push(<MentorAnswer ans_id={ans.answer_id} userid={ans.user_id} full_answer={ans.full_answer} likes={ans.like_count} accp={ans.accp} />);
-			// }
-			this.state.answers.forEach((el,i) => {
-				let ans = el;
-				super_block.push(<MentorAnswer ans_id={ans.answer_id} userid={ans.user_id} full_answer={ans.full_answer} likes={ans.like_count} accp={ans.accp} />);
-			})
-		}else {
-			// for(x = 0; x<this.state.answers.length;x++){
-			// 	var ans = this.state.answers[x];
-			// 	super_block.push(<ViewerAnswer ans_id={ans.answer_id} userid={ans.user_id} full_answer={ans.full_answer} likes={ans.like_count} accp={ans.accp} />);
-			// }
-			this.state.answers.forEach((el,i) => {
-				let ans = el;
-				super_block.push(<ViewerAnswer ans_id={ans.answer_id} userid={ans.user_id} full_answer={ans.full_answer} likes={ans.like_count} accp={ans.accp} />);
-			})
-		}
-			
+			if (role) {
+				// for(x = 0; x<this.state.answers.length;x++){
+				// 	var ans = this.state.answers[x];
+				// 	super_block.push(<MentorAnswer ans_id={ans.answer_id} userid={ans.user_id} full_answer={ans.full_answer} likes={ans.like_count} accp={ans.accp} />);
+				// }
+				this.state.answers.forEach((el, i) => {
+					let ans = el;
+					super_block.push(<MentorAnswer ans_id={ans.answer_id} userid={ans.user_id} full_answer={ans.full_answer} likes={ans.like_count} accp={ans.accp} />);
+				})
+			} else {
+				// for(x = 0; x<this.state.answers.length;x++){
+				// 	var ans = this.state.answers[x];
+				// 	super_block.push(<ViewerAnswer ans_id={ans.answer_id} userid={ans.user_id} full_answer={ans.full_answer} likes={ans.like_count} accp={ans.accp} />);
+				// }
+				this.state.answers.forEach((el, i) => {
+					let ans = el;
+					super_block.push(<ViewerAnswer ans_id={ans.answer_id} userid={ans.user_id} full_answer={ans.full_answer} likes={ans.like_count} accp={ans.accp} />);
+				})
+			}
+
 		}
 		return (
 			<div>
@@ -147,12 +147,11 @@ class ViewAnswer extends React.Component {
                         								</Button>
 											</div>
 										</div>
-
 								}
 
 								<div className="container" id="answers">
-									{this.state.answers.map((ans,id) => {
-										return(<RenderAnswer ans = {ans} role={role}/>);
+									{this.state.answers.map((ans, id) => {
+										return (<RenderAnswer ans={ans} role={role} />);
 									})}
 
 
@@ -160,7 +159,7 @@ class ViewAnswer extends React.Component {
 								</div>
 							</div>
 							<div id="right" className="d-inline">
-								
+
 							</div>
 						</div>
 					</MDBBox>

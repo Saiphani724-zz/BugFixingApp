@@ -94,7 +94,27 @@
 	<filter>
     <filter-name>CorsFilter</filter-name>
     <filter-class>backend.CORSFilter</filter-class>
-</filter>
+	</filter>
+
+
+	<servlet>
+		<servlet-name>FeedbackServlet</servlet-name>
+		<servlet-class>backend.FeedbackServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FeedbackServlet</servlet-name>
+		<url-pattern>/submitfeedback</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>FeedbackOpenServlet</servlet-name>
+		<servlet-class>backend.FeedbackOpenServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>FeedbackOpenServlet</servlet-name>
+		<url-pattern>/feedback</url-pattern>
+	</servlet-mapping>
+
 
 
  

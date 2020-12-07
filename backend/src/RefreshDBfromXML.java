@@ -33,6 +33,7 @@ public class RefreshDBfromXML  {
 	            statement.execute("drop table if exists answers");
 	            statement.execute("drop table if exists questions");
 	            statement.execute("drop table if exists users");
+	            statement.execute("drop table if exists feedback");
 
 
 	            String createUsersTable = "create table USERS"
@@ -46,6 +47,13 @@ public class RefreshDBfromXML  {
 	                    + "primary key(user_id)"
 	                    + ")";
 	            statement.execute(createUsersTable);
+	            
+	            String createFeedbackTable = "create table feedback"
+	                    + "("
+	                    + "rating numeric,"
+	                    + "comment varchar(500)"
+	                    + ")";
+	            statement.execute(createFeedbackTable );
 
 
 	            String createQuestionsTable = "create table QUESTIONS (" +
@@ -77,8 +85,8 @@ public class RefreshDBfromXML  {
 	            statement.execute(createAnswersTable);
 
 
-	            //File inputFile = new File("D:\\Projects\\BugFixingApp\\backend\\src\\sampledb.xml");
-	            File inputFile = new File("/home/sachmo/Documents/NCP_SEM7/PROJECT/BugFixingApp/backend/src/sampledb.xml");
+	            File inputFile = new File("D:\\Projects\\BugFixingApp\\backend\\src\\sampledb.xml");
+//	            File inputFile = new File("/home/sachmo/Documents/NCP_SEM7/PROJECT/BugFixingApp/backend/src/sampledb.xml");
 
 	            
 	            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -106,7 +114,15 @@ public class RefreshDBfromXML  {
 
 	            }
 
-	            // statement.execute("insert into items values (" + college + ","+ state +","+ city +","+ tution +","+ hostel +","+ mess + ","+ total +  "  ); ");
+	             statement.execute("insert into feedback values (4, 'good!!') ");
+	             statement.execute("insert into feedback values (5, 'very good!!') ");
+	             statement.execute("insert into feedback values (2, 'okayish!!') ");
+	             statement.execute("insert into feedback values (1, 'okayish!!') ");
+	             statement.execute("insert into feedback values (2, 'okayish!!') ");
+	             statement.execute("insert into feedback values (3, 'okayish!!') ");
+	             statement.execute("insert into feedback values (3, 'okayish!!') ");
+	             statement.execute("insert into feedback values (3, 'okayish!!') ");
+	             
 	            // String query = String.format("insert into users values ('%s', '%s', '%s', %s,%s,%s,%s) ;", college,state,city,tution,hostel,mess,total);
 
 
